@@ -63,9 +63,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Find_label.AutoSize = true;
+            this.Find_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Find_label.Location = new System.Drawing.Point(13, 13);
             this.Find_label.Name = "Find_label";
-            this.Find_label.Size = new System.Drawing.Size(30, 13);
+            this.Find_label.Size = new System.Drawing.Size(34, 15);
             this.Find_label.TabIndex = 0;
             this.Find_label.Text = "Find:";
             // 
@@ -90,19 +91,22 @@
             // 
             this.ContactsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.ContactsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ContactsList.FormattingEnabled = true;
+            this.ContactsList.ItemHeight = 15;
             this.ContactsList.Location = new System.Drawing.Point(12, 37);
             this.ContactsList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ContactsList.Name = "ContactsList";
-            this.ContactsList.Size = new System.Drawing.Size(240, 329);
+            this.ContactsList.Size = new System.Drawing.Size(240, 319);
             this.ContactsList.TabIndex = 6;
             // 
             // FullNameLabel
             // 
             this.FullNameLabel.AutoSize = true;
+            this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullNameLabel.Location = new System.Drawing.Point(383, 20);
             this.FullNameLabel.Name = "FullNameLabel";
-            this.FullNameLabel.Size = new System.Drawing.Size(57, 13);
+            this.FullNameLabel.Size = new System.Drawing.Size(67, 15);
             this.FullNameLabel.TabIndex = 7;
             this.FullNameLabel.Text = "Full Name:";
             // 
@@ -110,7 +114,7 @@
             // 
             this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FullNameTextBox.Location = new System.Drawing.Point(383, 35);
+            this.FullNameTextBox.Location = new System.Drawing.Point(383, 37);
             this.FullNameTextBox.Margin = new System.Windows.Forms.Padding(3, 35, 3, 3);
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(409, 20);
@@ -120,7 +124,7 @@
             // 
             this.MailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MailTextBox.Location = new System.Drawing.Point(383, 85);
+            this.MailTextBox.Location = new System.Drawing.Point(383, 88);
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(409, 20);
             this.MailTextBox.TabIndex = 10;
@@ -128,15 +132,16 @@
             // MailLabel
             // 
             this.MailLabel.AutoSize = true;
+            this.MailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MailLabel.Location = new System.Drawing.Point(383, 70);
             this.MailLabel.Name = "MailLabel";
-            this.MailLabel.Size = new System.Drawing.Size(38, 13);
+            this.MailLabel.Size = new System.Drawing.Size(46, 15);
             this.MailLabel.TabIndex = 9;
             this.MailLabel.Text = "E-mail:";
             // 
             // PhoneNumberBox
             // 
-            this.PhoneNumberBox.Location = new System.Drawing.Point(383, 135);
+            this.PhoneNumberBox.Location = new System.Drawing.Point(383, 138);
             this.PhoneNumberBox.Name = "PhoneNumberBox";
             this.PhoneNumberBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberBox.TabIndex = 12;
@@ -144,15 +149,16 @@
             // PhoneNumberLabel
             // 
             this.PhoneNumberLabel.AutoSize = true;
+            this.PhoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PhoneNumberLabel.Location = new System.Drawing.Point(383, 120);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
-            this.PhoneNumberLabel.Size = new System.Drawing.Size(78, 13);
+            this.PhoneNumberLabel.Size = new System.Drawing.Size(91, 15);
             this.PhoneNumberLabel.TabIndex = 11;
             this.PhoneNumberLabel.Text = "PhoneNumber:";
             // 
             // DateBox
             // 
-            this.DateBox.Location = new System.Drawing.Point(383, 185);
+            this.DateBox.Location = new System.Drawing.Point(383, 188);
             this.DateBox.Name = "DateBox";
             this.DateBox.Size = new System.Drawing.Size(180, 20);
             this.DateBox.TabIndex = 14;
@@ -160,15 +166,16 @@
             // DateLabel
             // 
             this.DateLabel.AutoSize = true;
+            this.DateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DateLabel.Location = new System.Drawing.Point(383, 170);
             this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(69, 13);
+            this.DateLabel.Size = new System.Drawing.Size(77, 15);
             this.DateLabel.TabIndex = 13;
             this.DateLabel.Text = "Date of Birth:";
             // 
             // VKBox
             // 
-            this.VKBox.Location = new System.Drawing.Point(383, 235);
+            this.VKBox.Location = new System.Drawing.Point(383, 238);
             this.VKBox.Name = "VKBox";
             this.VKBox.Size = new System.Drawing.Size(180, 20);
             this.VKBox.TabIndex = 16;
@@ -176,9 +183,10 @@
             // VKLabel
             // 
             this.VKLabel.AutoSize = true;
+            this.VKLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.VKLabel.Location = new System.Drawing.Point(383, 220);
             this.VKLabel.Name = "VKLabel";
-            this.VKLabel.Size = new System.Drawing.Size(24, 13);
+            this.VKLabel.Size = new System.Drawing.Size(25, 15);
             this.VKLabel.TabIndex = 15;
             this.VKLabel.Text = "VK:";
             // 
