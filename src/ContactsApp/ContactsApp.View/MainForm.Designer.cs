@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Find_label = new System.Windows.Forms.Label();
             this.Find_TextBox = new System.Windows.Forms.TextBox();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
@@ -49,7 +48,6 @@
             this.MessagePanel = new System.Windows.Forms.Panel();
             this.CloseMessageButton = new System.Windows.Forms.Button();
             this.BirthdaysListLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.InfoPicture = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
@@ -255,7 +253,6 @@
             this.MessagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.MessagePanel.Controls.Add(this.CloseMessageButton);
             this.MessagePanel.Controls.Add(this.BirthdaysListLabel);
-            this.MessagePanel.Controls.Add(this.label1);
             this.MessagePanel.Controls.Add(this.BirthdayLabel);
             this.MessagePanel.Controls.Add(this.InfoPicture);
             this.MessagePanel.Location = new System.Drawing.Point(277, 310);
@@ -289,18 +286,6 @@
             this.BirthdaysListLabel.Size = new System.Drawing.Size(109, 15);
             this.BirthdaysListLabel.TabIndex = 3;
             this.BirthdaysListLabel.Text = "List of Birthdays";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(71, 41);
-            this.label1.MaximumSize = new System.Drawing.Size(400, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 15);
-            this.label1.TabIndex = 2;
             // 
             // BirthdayLabel
             // 
@@ -347,9 +332,10 @@
             this.Controls.Add(this.PhotoBox);
             this.Controls.Add(this.Find_TextBox);
             this.Controls.Add(this.Find_label);
-            this.Icon = Properties.Resources.ContactsApp_96x96;
+            this.Icon = global::ContactsApp.View.Properties.Resources.ContactsApp_96x96;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).EndInit();
             this.MessagePanel.ResumeLayout(false);
             this.MessagePanel.PerformLayout();
@@ -380,7 +366,6 @@
         private System.Windows.Forms.Button RemoveContactButton;
         private System.Windows.Forms.Panel MessagePanel;
         private System.Windows.Forms.PictureBox InfoPicture;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label BirthdayLabel;
         private System.Windows.Forms.Label BirthdaysListLabel;
         private System.Windows.Forms.Button CloseMessageButton;

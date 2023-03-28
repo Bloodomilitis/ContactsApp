@@ -54,5 +54,11 @@ namespace ContactsApp.View
         {
             MessagePanel.Visible = false;
         }
+
+        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            AboutForm newForm = new AboutForm();
+            newForm.Show();
+        }
     }
 }

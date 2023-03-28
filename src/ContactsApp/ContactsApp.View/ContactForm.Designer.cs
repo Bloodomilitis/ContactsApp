@@ -39,7 +39,7 @@
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.ChoosePhotoButton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,21 +152,21 @@
             this.ChoosePhotoButton.MouseLeave += new System.EventHandler(this.ChoosePhotoButton_MouseLeave);
             this.ChoosePhotoButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChoosePhotoButton_MouseMove);
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(118, 190);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 20);
-            this.dateTimePicker1.TabIndex = 29;
-            this.dateTimePicker1.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker.Location = new System.Drawing.Point(118, 190);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(180, 20);
+            this.dateTimePicker.TabIndex = 29;
+            this.dateTimePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
-            // Contact
+            // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(511, 309);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.ChoosePhotoButton);
             this.Controls.Add(this.VKBox);
             this.Controls.Add(this.VKLabel);
@@ -179,7 +179,7 @@
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.PhotoBox);
             this.Icon = global::ContactsApp.View.Properties.Resources.ContactsApp_96x96;
-            this.Name = "Contact";
+            this.Name = "ContactForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Contact";
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).EndInit();
@@ -201,6 +201,6 @@
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Button ChoosePhotoButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }

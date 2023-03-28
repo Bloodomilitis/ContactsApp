@@ -117,4 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Copyright (c) 2023 Bloodomilitis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CloseButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsQAAALEAGtI711
+        AAACY0lEQVRIS+WVOW8UQRBGFyJOCVLOyPAnEGfEbwBBiECEHDmnkAhAeCGwkZ3BLhIZODBImGN3hUAY
+        JG8CAeYSgthx8Wqr6emZ6ekdsdqIpw5mqmv6m/mmurohY+Z/EFj8IRc7sr8tu2ZkfVMHFwceyKWuLH53
+        OQlSAi8+y762NG6kBsIvl11+lEqBE/OyarDE5jtyfE7aff0Ug4tWX47N6RQJpJ2cd1Nl4gJ7W/rkukk5
+        v+AiVZxbkLWT7lOiRATMli1TalEdel9lx7Q+sqflIiFFAZwhddu0fPrtInUgeeuUPnjqiYt4cgK8Mobi
+        TOeLi9Tn1bJ6tfqmXoTkBMycob5XcfaZPk4Fh2QC1AbTFMYobLqti7z/W2+QCbCbmKP4RuHoY13kctfd
+        QibApzFHgXv6P2XnXbnWc7dlmCKBNM+9JV3kYOBSJjAxq3Ph7m++1QgjqkHQZknzmM8TM+4WMoENTZ0r
+        wCq2ny90XMTwq2NsAYIs5RkiAGWNxOpAfGNUoGyRJ9RIr/5uYBHt1pP6ySF+XRvcRrGffCj6k+nvzCXK
+        1H9H9N2NI4804WognwnU2WjXX+tIkNpoQMtlmg78b5wZtIrQH8gJcDZhAj2r0LDqQKNcc0ubXTffKHMC
+        wNnEW9B7P/5ykTqQbO369FMX8RQFwIziwHle78DhlbcPDpxCHzUiAmAaeEUHToPvOENy2H9C4gLA2YSh
+        PElh0CPvL+kmMrig3glazZBWdsZTKQBvvsnhh7pEYmBLuiJSAgZFTX/HARoA/Yqxe1Zr8UpPPgT1XsVw
+        gRFprKy4qzGhAmPUEPkD3PzpRHkaqloAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>
