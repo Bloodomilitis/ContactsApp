@@ -347,7 +347,7 @@
             this.Controls.Add(this.PhotoBox);
             this.Controls.Add(this.Find_TextBox);
             this.Controls.Add(this.Find_label);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = Properties.Resources.ContactsApp_96x96;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).EndInit();
