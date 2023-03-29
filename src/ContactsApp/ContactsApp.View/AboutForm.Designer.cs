@@ -35,7 +35,7 @@
             this.MailLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.ImagesLabel = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.GitHubLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -109,18 +109,18 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // linkLabel1
+            // ImagesLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(36, 46);
-            this.linkLabel1.Location = new System.Drawing.Point(24, 384);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(307, 20);
-            this.linkLabel1.TabIndex = 8;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "All used images are downloaded from icons8.com";
-            this.linkLabel1.UseCompatibleTextRendering = true;
+            this.ImagesLabel.AutoSize = true;
+            this.ImagesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ImagesLabel.LinkArea = new System.Windows.Forms.LinkArea(36, 46);
+            this.ImagesLabel.Location = new System.Drawing.Point(24, 384);
+            this.ImagesLabel.Name = "ImagesLabel";
+            this.ImagesLabel.Size = new System.Drawing.Size(307, 20);
+            this.ImagesLabel.TabIndex = 8;
+            this.ImagesLabel.TabStop = true;
+            this.ImagesLabel.Text = "All used images are downloaded from icons8.com";
+            this.ImagesLabel.UseCompatibleTextRendering = true;
             // 
             // linkLabel2
             // 
@@ -152,7 +152,7 @@
             this.CancelButton = this.CloseButton;
             this.ClientSize = new System.Drawing.Size(512, 450);
             this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.ImagesLabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.GitHubLabel);
@@ -177,7 +177,7 @@
         private System.Windows.Forms.Label MailLabel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel ImagesLabel;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label GitHubLabel;
     }

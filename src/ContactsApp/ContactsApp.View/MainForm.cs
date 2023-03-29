@@ -60,5 +60,17 @@ namespace ContactsApp.View
             AboutForm newForm = new AboutForm();
             newForm.Show();
         }
+
+        private void AddContactButton_Click(object sender, EventArgs e)
+        {
+            ContactForm newForm = new ContactForm();
+            newForm.Show();
+        }
+
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            ContactForm newForm = new ContactForm();
+            newForm.Show();
+        }
     }
 }

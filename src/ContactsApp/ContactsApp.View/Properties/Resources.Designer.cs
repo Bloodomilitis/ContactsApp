@@ -113,6 +113,16 @@ namespace ContactsApp.View.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_32x32_white {
+            get {
+                object obj = ResourceManager.GetObject("close_32x32_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap collapse_32x32 {
             get {
                 object obj = ResourceManager.GetObject("collapse_32x32", resourceCulture);

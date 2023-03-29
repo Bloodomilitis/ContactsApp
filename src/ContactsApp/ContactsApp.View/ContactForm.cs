@@ -26,5 +26,10 @@ namespace ContactsApp.View
         {
             ChoosePhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

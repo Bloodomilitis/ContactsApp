@@ -204,6 +204,7 @@
             this.AddContactButton.Size = new System.Drawing.Size(80, 40);
             this.AddContactButton.TabIndex = 17;
             this.AddContactButton.UseVisualStyleBackColor = false;
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
             this.AddContactButton.MouseLeave += new System.EventHandler(this.AddContactButton_MouseLeave);
             this.AddContactButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddContactButton_MouseMove);
             // 
@@ -223,6 +224,7 @@
             this.EditContactButton.Size = new System.Drawing.Size(80, 40);
             this.EditContactButton.TabIndex = 18;
             this.EditContactButton.UseVisualStyleBackColor = false;
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
             this.EditContactButton.MouseLeave += new System.EventHandler(this.EditContactButton_MouseLeave);
             this.EditContactButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EditContactButton_MouseMove);
             // 
