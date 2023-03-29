@@ -41,8 +41,8 @@
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.ChoosePhotoButton = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.AcceptButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,6 +163,21 @@
             this.dateTimePicker.TabIndex = 29;
             this.dateTimePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
+            // AcceptButton
+            // 
+            this.AcceptButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.AcceptButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AcceptButton.FlatAppearance.BorderSize = 0;
+            this.AcceptButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.AcceptButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.AcceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AcceptButton.Image = ((System.Drawing.Image)(resources.GetObject("AcceptButton.Image")));
+            this.AcceptButton.Location = new System.Drawing.Point(418, 265);
+            this.AcceptButton.Name = "AcceptButton";
+            this.AcceptButton.Size = new System.Drawing.Size(32, 32);
+            this.AcceptButton.TabIndex = 30;
+            this.AcceptButton.UseVisualStyleBackColor = true;
+            // 
             // CloseButton
             // 
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -171,37 +186,23 @@
             this.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Image = ((System.Drawing.Image)(resources.GetObject("CloseButton.Image")));
-            this.CloseButton.Location = new System.Drawing.Point(418, 265);
+            this.CloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32_white;
+            this.CloseButton.Location = new System.Drawing.Point(456, 265);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(32, 32);
-            this.CloseButton.TabIndex = 30;
+            this.CloseButton.TabIndex = 31;
             this.CloseButton.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::ContactsApp.View.Properties.Resources.close_32x32_white;
-            this.button1.Location = new System.Drawing.Point(456, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 32);
-            this.button1.TabIndex = 31;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CloseButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.AcceptButton;
             this.ClientSize = new System.Drawing.Size(511, 309);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.CloseButton);
+            this.Controls.Add(this.AcceptButton);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.ChoosePhotoButton);
             this.Controls.Add(this.VKBox);
@@ -238,7 +239,7 @@
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Button ChoosePhotoButton;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Button AcceptButton;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Button button1;
     }
 }
