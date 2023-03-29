@@ -52,6 +52,7 @@
             this.VKBox.Name = "VKBox";
             this.VKBox.Size = new System.Drawing.Size(180, 20);
             this.VKBox.TabIndex = 27;
+            this.VKBox.Enter += new System.EventHandler(this.VKBox_Enter);
             // 
             // VKLabel
             // 
@@ -80,6 +81,8 @@
             this.PhoneNumberBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberBox.TabIndex = 23;
             this.PhoneNumberBox.Text = " ";
+            this.PhoneNumberBox.Enter += new System.EventHandler(this.PhoneNumberBox_Leave);
+            this.PhoneNumberBox.Leave += new System.EventHandler(this.PhoneNumberBox_Leave);
             // 
             // PhoneNumberLabel
             // 
@@ -99,6 +102,8 @@
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(381, 20);
             this.MailTextBox.TabIndex = 21;
+            this.MailTextBox.Enter += new System.EventHandler(this.MailTextBox_Enter);
+            this.MailTextBox.Leave += new System.EventHandler(this.MailTextBox_Enter);
             // 
             // MailLabel
             // 
@@ -119,6 +124,8 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(381, 20);
             this.FullNameTextBox.TabIndex = 19;
+            this.FullNameTextBox.Enter += new System.EventHandler(this.FullNameTextBox_Enter);
+            this.FullNameTextBox.Leave += new System.EventHandler(this.FullNameTextBox_Enter);
             // 
             // FullNameLabel
             // 
