@@ -11,7 +11,7 @@ namespace ContactsApp.Model
     /// <summary>
     /// Описывает контакт.
     /// </summary>
-    internal class Contact : ICloneable
+    public class Contact : ICloneable
     {
         /// <summary>
         /// Полное имя контакта.

@@ -40,7 +40,7 @@
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.ChoosePhotoButton = new System.Windows.Forms.Button();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.BirthdayPicker = new System.Windows.Forms.DateTimePicker();
             this.AcceptButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
@@ -162,13 +162,14 @@
             this.ChoosePhotoButton.MouseLeave += new System.EventHandler(this.ChoosePhotoButton_MouseLeave);
             this.ChoosePhotoButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChoosePhotoButton_MouseMove);
             // 
-            // dateTimePicker
+            // BirthdayPicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(118, 190);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(180, 20);
-            this.dateTimePicker.TabIndex = 29;
-            this.dateTimePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.BirthdayPicker.Location = new System.Drawing.Point(118, 190);
+            this.BirthdayPicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.BirthdayPicker.Name = "BirthdayPicker";
+            this.BirthdayPicker.Size = new System.Drawing.Size(180, 20);
+            this.BirthdayPicker.TabIndex = 29;
+            this.BirthdayPicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // AcceptButton
             // 
@@ -184,6 +185,7 @@
             this.AcceptButton.Size = new System.Drawing.Size(32, 32);
             this.AcceptButton.TabIndex = 30;
             this.AcceptButton.UseVisualStyleBackColor = true;
+            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // CloseButton
             // 
@@ -199,7 +201,7 @@
             this.CloseButton.Size = new System.Drawing.Size(32, 32);
             this.CloseButton.TabIndex = 31;
             this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.button1_Click);
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ContactForm
             // 
@@ -210,7 +212,7 @@
             this.ClientSize = new System.Drawing.Size(511, 309);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.AcceptButton);
-            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.BirthdayPicker);
             this.Controls.Add(this.ChoosePhotoButton);
             this.Controls.Add(this.VKBox);
             this.Controls.Add(this.VKLabel);
@@ -245,7 +247,7 @@
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Button ChoosePhotoButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.DateTimePicker BirthdayPicker;
         private System.Windows.Forms.Button AcceptButton;
         private System.Windows.Forms.Button CloseButton;
     }

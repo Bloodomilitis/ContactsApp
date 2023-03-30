@@ -16,6 +16,15 @@ namespace ContactsApp.View
 {
     public partial class ContactForm : Form
     {
+        public ContactForm(string fullname, string mail, string phone, DateTime date)
+        {
+            InitializeComponent();
+            this.FullNameTextBox.Text = fullname;
+            this.MailTextBox.Text = mail;
+            this.PhoneNumberBox.Text = phone;
+            this.BirthdayPicker.Value = date;
+            
+        }
         public ContactForm()
         {
             InitializeComponent();
@@ -31,7 +40,7 @@ namespace ContactsApp.View
             ChoosePhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -39,8 +48,12 @@ namespace ContactsApp.View
         private void PhoneNumberBox_Leave(object sender, EventArgs e)
         {
             Regex regex = new Regex(@"[^\d]");
-
-            string phoneNum = regex.Replace(PhoneNumberBox.Text, "");
+            string phoneNum = PhoneNumberBox.Text;
+            if (phoneNum.StartsWith("+7"))
+            {
+                phoneNum=phoneNum.Remove(0, 2);
+            }
+             phoneNum = regex.Replace(phoneNum, "");
             if (phoneNum.Length > 0)
             {
                 if (phoneNum.Length > 10)
@@ -76,6 +89,10 @@ namespace ContactsApp.View
             {
                 VKBox.Text = MailTextBox.Text.Substring(0, 50);
             }
+        }
+
+        private void AcceptButton_Click(object sender, EventArgs e)
+        {
         }
     }
 }

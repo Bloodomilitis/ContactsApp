@@ -32,7 +32,7 @@
             this.Find_TextBox = new System.Windows.Forms.TextBox();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
-            this.FullNameTextBox = new System.Windows.Forms.TextBox();
+            this.FullNameBox = new System.Windows.Forms.TextBox();
             this.MailTextBox = new System.Windows.Forms.TextBox();
             this.MailLabel = new System.Windows.Forms.Label();
             this.PhoneNumberBox = new System.Windows.Forms.TextBox();
@@ -95,15 +95,16 @@
             this.FullNameLabel.TabIndex = 7;
             this.FullNameLabel.Text = "Full Name:";
             // 
-            // FullNameTextBox
+            // FullNameBox
             // 
-            this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.FullNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FullNameTextBox.Location = new System.Drawing.Point(383, 37);
-            this.FullNameTextBox.Margin = new System.Windows.Forms.Padding(3, 35, 3, 3);
-            this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(409, 20);
-            this.FullNameTextBox.TabIndex = 8;
+            this.FullNameBox.Location = new System.Drawing.Point(383, 37);
+            this.FullNameBox.Margin = new System.Windows.Forms.Padding(3, 35, 3, 3);
+            this.FullNameBox.Name = "FullNameBox";
+            this.FullNameBox.ReadOnly = true;
+            this.FullNameBox.Size = new System.Drawing.Size(409, 20);
+            this.FullNameBox.TabIndex = 8;
             // 
             // MailTextBox
             // 
@@ -111,6 +112,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MailTextBox.Location = new System.Drawing.Point(383, 88);
             this.MailTextBox.Name = "MailTextBox";
+            this.MailTextBox.ReadOnly = true;
             this.MailTextBox.Size = new System.Drawing.Size(409, 20);
             this.MailTextBox.TabIndex = 10;
             // 
@@ -128,6 +130,7 @@
             // 
             this.PhoneNumberBox.Location = new System.Drawing.Point(383, 138);
             this.PhoneNumberBox.Name = "PhoneNumberBox";
+            this.PhoneNumberBox.ReadOnly = true;
             this.PhoneNumberBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberBox.TabIndex = 12;
             // 
@@ -145,6 +148,7 @@
             // 
             this.DateBox.Location = new System.Drawing.Point(383, 188);
             this.DateBox.Name = "DateBox";
+            this.DateBox.ReadOnly = true;
             this.DateBox.Size = new System.Drawing.Size(180, 20);
             this.DateBox.TabIndex = 14;
             // 
@@ -162,6 +166,7 @@
             // 
             this.VKBox.Location = new System.Drawing.Point(383, 238);
             this.VKBox.Name = "VKBox";
+            this.VKBox.ReadOnly = true;
             this.VKBox.Size = new System.Drawing.Size(180, 20);
             this.VKBox.TabIndex = 16;
             // 
@@ -232,6 +237,7 @@
             this.RemoveContactButton.Size = new System.Drawing.Size(80, 40);
             this.RemoveContactButton.TabIndex = 19;
             this.RemoveContactButton.UseVisualStyleBackColor = false;
+            this.RemoveContactButton.Click += new System.EventHandler(this.RemoveContactButton_Click);
             this.RemoveContactButton.MouseLeave += new System.EventHandler(this.RemoveContactButton_MouseLeave);
             this.RemoveContactButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RemoveContactButton_MouseMove);
             // 
@@ -251,6 +257,7 @@
             // 
             // CloseMessageButton
             // 
+            this.CloseMessageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseMessageButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.CloseMessageButton.FlatAppearance.BorderSize = 0;
             this.CloseMessageButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -310,6 +317,7 @@
             this.ContactsList.Name = "ContactsList";
             this.ContactsList.Size = new System.Drawing.Size(240, 319);
             this.ContactsList.TabIndex = 6;
+            this.ContactsList.SelectedIndexChanged += new System.EventHandler(this.ContactsList_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -328,7 +336,7 @@
             this.Controls.Add(this.PhoneNumberLabel);
             this.Controls.Add(this.MailTextBox);
             this.Controls.Add(this.MailLabel);
-            this.Controls.Add(this.FullNameTextBox);
+            this.Controls.Add(this.FullNameBox);
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.ContactsList);
             this.Controls.Add(this.PhotoBox);
@@ -337,7 +345,10 @@
             this.Icon = global::ContactsApp.View.Properties.Resources.ContactsApp_96x96;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).EndInit();
             this.MessagePanel.ResumeLayout(false);
             this.MessagePanel.PerformLayout();
@@ -353,7 +364,7 @@
         private System.Windows.Forms.TextBox Find_TextBox;
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.TextBox FullNameTextBox;
+        private System.Windows.Forms.TextBox FullNameBox;
         private System.Windows.Forms.TextBox MailTextBox;
         private System.Windows.Forms.Label MailLabel;
         private System.Windows.Forms.TextBox PhoneNumberBox;

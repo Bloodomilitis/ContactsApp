@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.View", "ContactsApp.View\ContactsApp.View.csproj", "{4C763475-C5E5-4E32-A01B-65E92511C85B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66DE8BBA-2D79-4D0C-AC87-508057FF296E} = {66DE8BBA-2D79-4D0C-AC87-508057FF296E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.Model", "ContactsApp.Model\ContactsApp.Model.csproj", "{66DE8BBA-2D79-4D0C-AC87-508057FF296E}"
 EndProject
