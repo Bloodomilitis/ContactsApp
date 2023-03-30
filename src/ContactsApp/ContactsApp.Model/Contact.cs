@@ -10,16 +10,16 @@ namespace ContactsApp.Model
 {
     internal class Contact : ICloneable
     {
-        private string FullName;
+        private string _FullName;
         public string fullName
         {
-            get { return FullName; }
+            get { return _FullName; }
             set
             {
                 if (value.Length != 0 && value.Length <= 100)
                 {
 
-                    FullName = value;
+                    _FullName = value;
                 }
                 else if (value.Length >100)
                 {
@@ -33,15 +33,15 @@ namespace ContactsApp.Model
 
         }
         
-        private string Mail;
+        private string _Mail;
         public string mail
         {
-            get { return Mail; }
+            get { return _Mail; }
             set {
                 if (value.Length != 0 && value.Length <= 100)
                 {
 
-                    Mail = value;
+                    _Mail = value;
                 }
                 else if (value.Length > 100)
                 {
@@ -54,15 +54,15 @@ namespace ContactsApp.Model
             }
         }
         
-        private string Phone;
+        private string _Phone;
         public string phone
         {
-            get { return Phone; }
+            get { return _Phone; }
             set {
                 if (value.Length != 0)
                 {
 
-                    Phone = value;
+                    _Phone = value;
                 }
                 else
                 {
@@ -71,15 +71,15 @@ namespace ContactsApp.Model
             }
         }
         
-        private DateTime Birthday;   
+        private DateTime _Birthday;   
         public DateTime birthday
         {
-            get { return Birthday; }
+            get { return _Birthday; }
             set
             {
                 if (value.Year >= 1900 && value.Date < DateTime.Now)
                 {
-                    Birthday = value;
+                    _Birthday = value;
                 }
                 else
                 {
@@ -88,15 +88,15 @@ namespace ContactsApp.Model
             }
         }
        
-        private string IdVK;
+        private string _IdVK;
         public string idVK
         {
-            get { return IdVK; }
+            get { return _IdVK; }
             set {
                 if (value.Length <= 50)
                 {
 
-                    IdVK = value;
+                    _IdVK = value;
                 }
                 else
                 {

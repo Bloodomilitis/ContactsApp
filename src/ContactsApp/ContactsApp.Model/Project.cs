@@ -10,12 +10,12 @@ namespace ContactsApp.Model
 {
     internal class Project
     {
-        private List<Contact> Contacts;
+        private List<Contact> _Contacts;
 
         public List<Contact> contacts
         {
-            get { return Contacts; }
-            set { Contacts = value; }
+            get { return _Contacts; }
+            set { _Contacts = value; }
         }
 
 
