@@ -191,7 +191,7 @@ namespace ContactsApp.View
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ;
-            if (MessageBox.Show("Do you really want to remove?", "Closing app", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Do you really want to close app?", "Closing app", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 e.Cancel = false;
             }
