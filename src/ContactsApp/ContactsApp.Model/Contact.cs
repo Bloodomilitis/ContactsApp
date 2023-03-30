@@ -8,18 +8,27 @@ using System.Xml.Linq;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// Описывает контакт.
+    /// </summary>
     internal class Contact : ICloneable
     {
-        private string _FullName;
+        /// <summary>
+        /// Полное имя контакта.
+        /// </summary>
+        private string _fullName;
+        /// <summary>
+        /// Возвращает или задае тполное имя контакта.
+        /// </summary>
         public string fullName
         {
-            get { return _FullName; }
+            get { return _fullName; }
             set
             {
                 if (value.Length != 0 && value.Length <= 100)
                 {
 
-                    _FullName = value;
+                    _fullName = value;
                 }
                 else if (value.Length >100)
                 {
@@ -32,16 +41,21 @@ namespace ContactsApp.Model
             }
 
         }
-        
-        private string _Mail;
+        /// <summary>
+        /// Почтовый ящик контакта.
+        /// </summary>
+        private string _mail;
+        /// <summary>
+        /// Возвращает или задает почтовый ящик контакта.
+        /// </summary>
         public string mail
         {
-            get { return _Mail; }
+            get { return _mail; }
             set {
                 if (value.Length != 0 && value.Length <= 100)
                 {
 
-                    _Mail = value;
+                    _mail = value;
                 }
                 else if (value.Length > 100)
                 {
@@ -53,16 +67,21 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
-        private string _Phone;
+        /// <summary>
+        /// Телефонный номер контакта.
+        /// </summary>
+        private string _phone;
+        /// <summary>
+        /// Возвращает или задает телефонный номер контакта.
+        /// </summary>
         public string phone
         {
-            get { return _Phone; }
+            get { return _phone; }
             set {
                 if (value.Length != 0)
                 {
 
-                    _Phone = value;
+                    _phone = value;
                 }
                 else
                 {
@@ -70,16 +89,21 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
-        private DateTime _Birthday;   
+        /// <summary>
+        /// Дата рождения контакта.
+        /// </summary>
+        private DateTime _birthday;
+        /// <summary>
+        /// Возвращает или задает дату рождения контакта.
+        /// </summary>
         public DateTime birthday
         {
-            get { return _Birthday; }
+            get { return _birthday; }
             set
             {
                 if (value.Year >= 1900 && value.Date < DateTime.Now)
                 {
-                    _Birthday = value;
+                    _birthday = value;
                 }
                 else
                 {
@@ -87,16 +111,21 @@ namespace ContactsApp.Model
                 }
             }
         }
-       
-        private string _IdVK;
+        /// <summary>
+        /// Номер ИД в ВК контакта.
+        /// </summary>
+        private string _idVK;
+        /// <summary>
+        /// Возвращает или задает номер ИД в ВК контакта.
+        /// </summary>
         public string idVK
         {
-            get { return _IdVK; }
+            get { return _idVK; }
             set {
                 if (value.Length <= 50)
                 {
 
-                    _IdVK = value;
+                    _idVK = value;
                 }
                 else
                 {
@@ -104,7 +133,9 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
+        /// <summary>
+        /// Создает экземпляр <see cref="Contact">.
+        /// </summary>
         public Contact(string name, string mail, string phone, DateTime birthday, string idvk)
         {
             this.fullName = name;
@@ -113,6 +144,9 @@ namespace ContactsApp.Model
             this.birthday = birthday;
             this.idVK = idvk;
         }
+        /// <summary>
+        /// Клонирует данный экземпляр <see cref="Contact">.
+        /// </summary>
         public object Clone()
         {
             return MemberwiseClone();
