@@ -31,7 +31,6 @@
             this.Find_label = new System.Windows.Forms.Label();
             this.Find_TextBox = new System.Windows.Forms.TextBox();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
-            this.ContactsList = new System.Windows.Forms.ListBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.MailTextBox = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.BirthdaysListLabel = new System.Windows.Forms.Label();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.InfoPicture = new System.Windows.Forms.PictureBox();
+            this.ContactsList = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
             this.MessagePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InfoPicture)).BeginInit();
@@ -84,19 +84,6 @@
             this.PhotoBox.Size = new System.Drawing.Size(100, 100);
             this.PhotoBox.TabIndex = 2;
             this.PhotoBox.TabStop = false;
-            // 
-            // ContactsList
-            // 
-            this.ContactsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ContactsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ContactsList.FormattingEnabled = true;
-            this.ContactsList.ItemHeight = 15;
-            this.ContactsList.Location = new System.Drawing.Point(12, 37);
-            this.ContactsList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.ContactsList.Name = "ContactsList";
-            this.ContactsList.Size = new System.Drawing.Size(240, 319);
-            this.ContactsList.TabIndex = 6;
             // 
             // FullNameLabel
             // 
@@ -311,6 +298,19 @@
             this.InfoPicture.TabIndex = 0;
             this.InfoPicture.TabStop = false;
             // 
+            // ContactsList
+            // 
+            this.ContactsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ContactsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ContactsList.FormattingEnabled = true;
+            this.ContactsList.ItemHeight = 15;
+            this.ContactsList.Location = new System.Drawing.Point(12, 37);
+            this.ContactsList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.ContactsList.Name = "ContactsList";
+            this.ContactsList.Size = new System.Drawing.Size(240, 319);
+            this.ContactsList.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -352,7 +352,6 @@
         private System.Windows.Forms.Label Find_label;
         private System.Windows.Forms.TextBox Find_TextBox;
         private System.Windows.Forms.PictureBox PhotoBox;
-        private System.Windows.Forms.ListBox ContactsList;
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.TextBox FullNameTextBox;
         private System.Windows.Forms.TextBox MailTextBox;
@@ -371,6 +370,7 @@
         private System.Windows.Forms.Label BirthdayLabel;
         private System.Windows.Forms.Label BirthdaysListLabel;
         private System.Windows.Forms.Button CloseMessageButton;
+        private System.Windows.Forms.ListBox ContactsList;
     }
 }
 
