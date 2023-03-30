@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp.Model;
+using Microsoft.Build.Evaluation;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
@@ -26,13 +27,15 @@ namespace ContactsApp.View
                 return randomInstance.Next(min, max);
             }
         }
-        private Project _project;
+        private Model.Project _project;
+
+        private List<Contact> _currentContacts;
+
         public MainForm()
         {
             InitializeComponent();
+            
         }
-
-
         private void RemoveContactButton_MouseMove(object sender, MouseEventArgs e)
         {
             RemoveContactButton.Image = Properties.Resources.remove_contact_32x32;
@@ -94,7 +97,7 @@ namespace ContactsApp.View
         {
             if (ContactsList.SelectedIndex!=-1)
             {
-                var Contact = new ContactForm((Contact)_project.contacts[ContactsList.SelectedIndex].Clone()); //Создаем форму
+                var Contact = new ContactForm((Contact)_project.contacts[_project.contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex])].Clone()); //Создаем форму
                 Contact.ShowDialog(); //Отображаем форму для редактирования
 
                 if (Contact.DialogResult == DialogResult.OK)
@@ -131,35 +134,72 @@ namespace ContactsApp.View
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _project= new Project();
+            _project = new Model.Project();
+            for (int i = 0; i < 10; i++)
+            {
+                Contact contact = new Contact(
+                RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
+                RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
+                RandomNumber(10),
+                DateTime.Now.Date,
+                "");
+                _project.AddContact(contact);
+                ContactsList.Items.Add(_project.contacts[i].fullName);
+            }
+            if (_project.Celebrants().Count > 0)
+            {
+                Celebrantsabel.Text = "";
+                foreach (Contact celebrants in _project.Celebrants())
+                {
+                    if (Celebrantsabel.Text.Split().Length < 5)
+                    {
+                        Celebrantsabel.Text += celebrants.fullName.Split().First() + ", ";
+                    }
+                    else
+                    {
+                        Celebrantsabel.Text = Celebrantsabel.Text.Remove(Celebrantsabel.Text.Length - 2);
+                        Celebrantsabel.Text += "...";
+                        break;
+                    }
+                }
+                MessagePanel.Visible = true;
+            }
+            else
+            {
+                MessagePanel.Visible = false;
+            }
+            
             UpdateListBox();
         }
         private void UpdateListBox()
         {
             ContactsList.Items.Clear();
-            if (FindBox.Text == "")
+            if (FindBox.Text != "")
             {
-                foreach (Contact contact in _project.contacts)
+                _currentContacts = _project.SearchContacts(FindBox.Text);
+                foreach (Contact contact in _currentContacts)
                 {
 
                     ContactsList.Items.Add(contact.fullName);
-                }            
+                }
+                         
             }
             else
             {
-                foreach (Contact contact in _project.SearchContacts(FindBox.Text))
+                _currentContacts = _project.contacts;
+                foreach (Contact contact in _currentContacts)
                 {
-
                     ContactsList.Items.Add(contact.fullName);
                 }
             }
         }
         private void AddContact()
         {
+            
             _project.AddContact(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
                 RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
                 RandomNumber(10),
-                RandomDate(),
+                DateTime.Now.Date,
                 ""));
             UpdateListBox();
         }
@@ -177,10 +217,10 @@ namespace ContactsApp.View
 
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
-            RemoveContact(ContactsList.SelectedIndex);
+            RemoveContact(_project.contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
             UpdateListBox();
         }
-
+        
         private void ContactsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ContactsList.SelectedIndex != -1)
@@ -194,11 +234,11 @@ namespace ContactsApp.View
         }
         private void UpdateSelectedContact(int index)
         {
-            FullNameBox.Text= _project.contacts[index].fullName;
-            MailTextBox.Text = _project.contacts[index].mail;
-            PhoneNumberBox.Text = _project.contacts[index].phone;
-            DateBox.Text = _project.contacts[index].birthday.ToShortDateString();
-            VKBox.Text = _project.contacts[index].idVK;
+            FullNameBox.Text= _project.contacts[_project.contacts.IndexOf(_currentContacts[index])].fullName;
+            MailTextBox.Text = _project.contacts[_project.contacts.IndexOf(_currentContacts[index])].mail;
+            PhoneNumberBox.Text = _project.contacts[_project.contacts.IndexOf(_currentContacts[index])].phone;
+            DateBox.Text = _project.contacts[_project.contacts.IndexOf(_currentContacts[index])].birthday.ToShortDateString();
+            VKBox.Text = _project.contacts[_project.contacts.IndexOf(_currentContacts[index])].idVK;
         }
         private void ClearSelectedContact()
         {

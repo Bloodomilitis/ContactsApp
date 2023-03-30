@@ -46,7 +46,7 @@
             this.RemoveContactButton = new System.Windows.Forms.Button();
             this.MessagePanel = new System.Windows.Forms.Panel();
             this.CloseMessageButton = new System.Windows.Forms.Button();
-            this.BirthdaysListLabel = new System.Windows.Forms.Label();
+            this.Celebrantsabel = new System.Windows.Forms.Label();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.InfoPicture = new System.Windows.Forms.PictureBox();
             this.ContactsList = new System.Windows.Forms.ListBox();
@@ -248,7 +248,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MessagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.MessagePanel.Controls.Add(this.CloseMessageButton);
-            this.MessagePanel.Controls.Add(this.BirthdaysListLabel);
+            this.MessagePanel.Controls.Add(this.Celebrantsabel);
             this.MessagePanel.Controls.Add(this.BirthdayLabel);
             this.MessagePanel.Controls.Add(this.InfoPicture);
             this.MessagePanel.Location = new System.Drawing.Point(277, 310);
@@ -272,17 +272,18 @@
             this.CloseMessageButton.UseVisualStyleBackColor = true;
             this.CloseMessageButton.Click += new System.EventHandler(this.CloseMessageButton_Click);
             // 
-            // BirthdaysListLabel
+            // Celebrantsabel
             // 
-            this.BirthdaysListLabel.AutoSize = true;
-            this.BirthdaysListLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.BirthdaysListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BirthdaysListLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.BirthdaysListLabel.Location = new System.Drawing.Point(71, 39);
-            this.BirthdaysListLabel.Name = "BirthdaysListLabel";
-            this.BirthdaysListLabel.Size = new System.Drawing.Size(109, 15);
-            this.BirthdaysListLabel.TabIndex = 3;
-            this.BirthdaysListLabel.Text = "List of Birthdays";
+            this.Celebrantsabel.AutoSize = true;
+            this.Celebrantsabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.Celebrantsabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Celebrantsabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.Celebrantsabel.Location = new System.Drawing.Point(71, 39);
+            this.Celebrantsabel.MaximumSize = new System.Drawing.Size(400, 0);
+            this.Celebrantsabel.Name = "Celebrantsabel";
+            this.Celebrantsabel.Size = new System.Drawing.Size(76, 15);
+            this.Celebrantsabel.TabIndex = 3;
+            this.Celebrantsabel.Text = "Celebrants";
             // 
             // BirthdayLabel
             // 
@@ -379,7 +380,7 @@
         private System.Windows.Forms.Panel MessagePanel;
         private System.Windows.Forms.PictureBox InfoPicture;
         private System.Windows.Forms.Label BirthdayLabel;
-        private System.Windows.Forms.Label BirthdaysListLabel;
+        private System.Windows.Forms.Label Celebrantsabel;
         private System.Windows.Forms.Button CloseMessageButton;
         private System.Windows.Forms.ListBox ContactsList;
     }

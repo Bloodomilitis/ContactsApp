@@ -64,10 +64,20 @@ namespace ContactsApp.Model
             return contacts.FindAll(e => regex.IsMatch(e.fullName));
         }
         /// <summary>
+        /// Возвращает список объектов <see cref="Contact">, чей день и месяц рождения равны сегодняшнему.
+        /// </summary>
+        public List<Contact> Celebrants()
+        {
+            List<Contact> Celebrants = contacts.Where(contact => contact.birthday.Day == DateTime.Now.Day && contact.birthday.Month == DateTime.Now.Month).ToList();
+            Celebrants.Sort((left, right) => left.fullName.CompareTo(right.fullName));
+            return Celebrants;
+        }
+        /// <summary>
         /// Создает экземпляр <see cref="Project">.
         /// </summary>
         public Project() { 
             contacts = new List<Contact>();
         }
+        
     }
 }
