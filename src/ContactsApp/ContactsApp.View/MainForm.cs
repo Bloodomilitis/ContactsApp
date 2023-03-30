@@ -32,7 +32,7 @@ namespace ContactsApp.View
             InitializeComponent();
         }
 
-        
+
         private void RemoveContactButton_MouseMove(object sender, MouseEventArgs e)
         {
             RemoveContactButton.Image = Properties.Resources.remove_contact_32x32;
@@ -77,14 +77,21 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
-            //ContactForm newForm = new ContactForm();
-            //newForm.Show();
+            /*ContactForm newForm = new ContactForm(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
+                RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
+                RandomNumber(8),
+                RandomDate(),
+                ""));
+            newForm.Show();*/
         }
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
-            ContactForm newForm = new ContactForm();
-            newForm.Show();
+            if (ContactsList.SelectedIndex!=-1)
+            {
+                ContactForm newForm = new ContactForm(_project.contacts[ContactsList.SelectedIndex]);
+                newForm.Show();
+            }
         }
 
         private string RandomWord(int length)
@@ -127,7 +134,7 @@ namespace ContactsApp.View
         { 
             _project.AddContact(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
                 RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
-                RandomNumber(8),
+                RandomNumber(10),
                 RandomDate(),
                 ""));
             UpdateListBox();

@@ -1,4 +1,6 @@
-﻿namespace ContactsApp.View
+﻿using System;
+
+namespace ContactsApp.View
 {
     partial class ContactForm
     {
@@ -40,7 +42,7 @@
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.ChoosePhotoButton = new System.Windows.Forms.Button();
-            this.BirthdayPicker = new System.Windows.Forms.DateTimePicker();
+            this.DatePicker = new System.Windows.Forms.DateTimePicker();
             this.AcceptButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
@@ -52,6 +54,7 @@
             this.VKBox.Name = "VKBox";
             this.VKBox.Size = new System.Drawing.Size(180, 20);
             this.VKBox.TabIndex = 27;
+            this.VKBox.TextChanged += new System.EventHandler(this.VKBox_TextChanged);
             this.VKBox.Enter += new System.EventHandler(this.VKBox_Enter);
             // 
             // VKLabel
@@ -81,7 +84,8 @@
             this.PhoneNumberBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberBox.TabIndex = 23;
             this.PhoneNumberBox.Text = " ";
-            this.PhoneNumberBox.Enter += new System.EventHandler(this.PhoneNumberBox_Leave);
+            this.PhoneNumberBox.TextChanged += new System.EventHandler(this.PhoneNumberBox_TextChanged);
+            this.PhoneNumberBox.Enter += new System.EventHandler(this.PhoneNumberBox_Enter);
             this.PhoneNumberBox.Leave += new System.EventHandler(this.PhoneNumberBox_Leave);
             // 
             // PhoneNumberLabel
@@ -102,8 +106,7 @@
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(381, 20);
             this.MailTextBox.TabIndex = 21;
-            this.MailTextBox.Enter += new System.EventHandler(this.MailTextBox_Enter);
-            this.MailTextBox.Leave += new System.EventHandler(this.MailTextBox_Enter);
+            this.MailTextBox.TextChanged += new System.EventHandler(this.MailTextBox_TextChanged);
             // 
             // MailLabel
             // 
@@ -124,8 +127,7 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(381, 20);
             this.FullNameTextBox.TabIndex = 19;
-            this.FullNameTextBox.Enter += new System.EventHandler(this.FullNameTextBox_Enter);
-            this.FullNameTextBox.Leave += new System.EventHandler(this.FullNameTextBox_Enter);
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FullNameLabel
             // 
@@ -162,14 +164,17 @@
             this.ChoosePhotoButton.MouseLeave += new System.EventHandler(this.ChoosePhotoButton_MouseLeave);
             this.ChoosePhotoButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChoosePhotoButton_MouseMove);
             // 
-            // BirthdayPicker
+            // DatePicker
             // 
-            this.BirthdayPicker.Location = new System.Drawing.Point(118, 190);
-            this.BirthdayPicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.BirthdayPicker.Name = "BirthdayPicker";
-            this.BirthdayPicker.Size = new System.Drawing.Size(180, 20);
-            this.BirthdayPicker.TabIndex = 29;
-            this.BirthdayPicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.DatePicker.Location = new System.Drawing.Point(118, 190);
+            this.DatePicker.MaxDate = new System.DateTime(2023, 3, 30, 16, 54, 58, 962);
+            this.DatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.DatePicker.Name = "DatePicker";
+            this.DatePicker.Size = new System.Drawing.Size(180, 20);
+            this.DatePicker.TabIndex = 29;
+            this.DatePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.DatePicker.CloseUp += new System.EventHandler(this.BirthdayPicker_CloseUp);
+            this.DatePicker.DropDown += new System.EventHandler(this.BirthdayPicker_DropDown);
             // 
             // AcceptButton
             // 
@@ -212,7 +217,7 @@
             this.ClientSize = new System.Drawing.Size(511, 309);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.AcceptButton);
-            this.Controls.Add(this.BirthdayPicker);
+            this.Controls.Add(this.DatePicker);
             this.Controls.Add(this.ChoosePhotoButton);
             this.Controls.Add(this.VKBox);
             this.Controls.Add(this.VKLabel);
@@ -247,7 +252,7 @@
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Button ChoosePhotoButton;
-        private System.Windows.Forms.DateTimePicker BirthdayPicker;
+        private System.Windows.Forms.DateTimePicker DatePicker;
         private System.Windows.Forms.Button AcceptButton;
         private System.Windows.Forms.Button CloseButton;
     }

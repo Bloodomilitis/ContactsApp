@@ -25,10 +25,14 @@ namespace ContactsApp.Model
             get { return _fullName; }
             set
             {
-                if (value.Length != 0 && value.Length <= 100)
+                if (value.Length != 0 && value.Length <= 100 && OnlyLetters(value))
                 {
 
                     _fullName = value;
+                }
+                else if (!OnlyLetters(value))
+                {
+                    throw new ArgumentException("Full Name contain number(s)!");
                 }
                 else if (value.Length >100)
                 {
@@ -150,6 +154,16 @@ namespace ContactsApp.Model
         public object Clone()
         {
             return MemberwiseClone();
+        }
+        public bool OnlyLetters(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c >= '0' && c <= '9')
+                    return false;
+            }
+            return true;
+
         }
     }
 }
