@@ -128,6 +128,7 @@ namespace ContactsApp.View
             this.FullNameTextBox.Size = new System.Drawing.Size(381, 20);
             this.FullNameTextBox.TabIndex = 19;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
+            this.FullNameTextBox.Leave += new System.EventHandler(this.FullNameTextBox_Leave);
             // 
             // FullNameLabel
             // 

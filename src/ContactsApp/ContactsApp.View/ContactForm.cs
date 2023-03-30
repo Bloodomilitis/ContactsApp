@@ -219,6 +219,12 @@ namespace ContactsApp.View
             }
         }
 
+        private void FullNameTextBox_Leave(object sender, EventArgs e)
+        {
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+            FullNameTextBox.Text = ti.ToTitleCase(FullNameTextBox.Text);
+        }
+
         private void BirthdayPicker_DropDown(object sender, EventArgs e)
         {
             DatePicker.ValueChanged -= BirthdayPicker_ValueChanged;
