@@ -61,7 +61,7 @@ namespace ContactsApp.Model
         public List<Contact> SearchContacts(string pattern)
         {
             Regex regex = new Regex(@"\w*" + pattern + @"\w*", RegexOptions.Compiled | RegexOptions.IgnoreCase);   
-            return contacts.FindAll(e => regex.IsMatch(e.fullName) || regex.IsMatch(e.mail) || regex.IsMatch(e.phone) || regex.IsMatch(e.fullName));
+            return contacts.FindAll(e => regex.IsMatch(e.fullName));
         }
         /// <summary>
         /// Создает экземпляр <see cref="Project">.

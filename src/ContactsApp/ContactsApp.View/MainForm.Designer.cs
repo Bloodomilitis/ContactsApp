@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Find_label = new System.Windows.Forms.Label();
-            this.Find_TextBox = new System.Windows.Forms.TextBox();
+            this.FindBox = new System.Windows.Forms.TextBox();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameBox = new System.Windows.Forms.TextBox();
@@ -68,12 +68,13 @@
             this.Find_label.TabIndex = 0;
             this.Find_label.Text = "Find:";
             // 
-            // Find_TextBox
+            // FindBox
             // 
-            this.Find_TextBox.Location = new System.Drawing.Point(49, 10);
-            this.Find_TextBox.Name = "Find_TextBox";
-            this.Find_TextBox.Size = new System.Drawing.Size(203, 20);
-            this.Find_TextBox.TabIndex = 1;
+            this.FindBox.Location = new System.Drawing.Point(49, 10);
+            this.FindBox.Name = "FindBox";
+            this.FindBox.Size = new System.Drawing.Size(203, 20);
+            this.FindBox.TabIndex = 1;
+            this.FindBox.TextChanged += new System.EventHandler(this.FindBox_TextChanged);
             // 
             // PhotoBox
             // 
@@ -340,7 +341,7 @@
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.ContactsList);
             this.Controls.Add(this.PhotoBox);
-            this.Controls.Add(this.Find_TextBox);
+            this.Controls.Add(this.FindBox);
             this.Controls.Add(this.Find_label);
             this.Icon = global::ContactsApp.View.Properties.Resources.ContactsApp_96x96;
             this.Name = "MainForm";
@@ -348,7 +349,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).EndInit();
             this.MessagePanel.ResumeLayout(false);
             this.MessagePanel.PerformLayout();
@@ -361,7 +361,7 @@
         #endregion
 
         private System.Windows.Forms.Label Find_label;
-        private System.Windows.Forms.TextBox Find_TextBox;
+        private System.Windows.Forms.TextBox FindBox;
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.TextBox FullNameBox;

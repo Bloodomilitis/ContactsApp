@@ -6,6 +6,7 @@ using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -19,17 +20,37 @@ namespace ContactsApp.View
     public partial class ContactForm : Form
     {
         private Contact _contact;
+        public Contact Contact
+        {
+            get
+            {
+                return _contact;
+            }
+            set
+            {
+                _contact = value;
+                if (_contact != null)
+                {
+                    UpdateForm();
+                }
+            }
+        }
+
         private string _fullNameError, _emailError, _dateError, _phoneError, _vkError;
         public ContactForm()
         {
             InitializeComponent();
-
+            Contact = new Contact(" ", " ", " ", DatePicker.MinDate, " ");
+            _fullNameError = "";
+            _emailError = "";
+            _dateError = "";
+            _phoneError = "";
+            _vkError = "";
         }
         public ContactForm(Contact contact)
         {
             InitializeComponent();
-            _contact = contact;
-            UpdateForm();
+            Contact = contact;
             FormatNumber();
             _fullNameError = "";
             _emailError = "";
@@ -59,7 +80,8 @@ namespace ContactsApp.View
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.No;
+            this.Close();
         }
 
         private void PhoneNumberBox_Leave(object sender, EventArgs e)
@@ -118,7 +140,8 @@ namespace ContactsApp.View
             if(CheckFormsOnErrors())
             {
                 UpdateContact();
-                Close();
+                DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 

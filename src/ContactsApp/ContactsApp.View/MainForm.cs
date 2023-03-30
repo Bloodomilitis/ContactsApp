@@ -76,21 +76,33 @@ namespace ContactsApp.View
 
         private void AddContactButton_Click(object sender, EventArgs e)
         {
-            AddContact();
-            /*ContactForm newForm = new ContactForm(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
+            var Contact = new ContactForm(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
                 RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
-                RandomNumber(8),
+                RandomNumber(10),
                 RandomDate(),
-                ""));
-            newForm.Show();*/
+                "")); //Создаем форму
+            Contact.ShowDialog(); //Отображаем форму для редактирования
+
+            if (Contact.DialogResult == DialogResult.OK)
+            {
+                _project.AddContact(Contact.Contact); //Забираем измененные данные
+                UpdateListBox();
+            }
         }
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             if (ContactsList.SelectedIndex!=-1)
             {
-                ContactForm newForm = new ContactForm(_project.contacts[ContactsList.SelectedIndex]);
-                newForm.Show();
+                var Contact = new ContactForm((Contact)_project.contacts[ContactsList.SelectedIndex].Clone()); //Создаем форму
+                Contact.ShowDialog(); //Отображаем форму для редактирования
+
+                if (Contact.DialogResult == DialogResult.OK)
+                {
+                    _project.contacts.RemoveAt(ContactsList.SelectedIndex);
+                    _project.AddContact(Contact.Contact); //Забираем измененные данные
+                    UpdateListBox();
+                }
             }
         }
 
@@ -125,13 +137,25 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsList.Items.Clear();
-            foreach(Contact contact in _project.contacts)
+            if (FindBox.Text == "")
             {
-                ContactsList.Items.Add(contact.fullName);
+                foreach (Contact contact in _project.contacts)
+                {
+
+                    ContactsList.Items.Add(contact.fullName);
+                }            
+            }
+            else
+            {
+                foreach (Contact contact in _project.SearchContacts(FindBox.Text))
+                {
+
+                    ContactsList.Items.Add(contact.fullName);
+                }
             }
         }
         private void AddContact()
-        { 
+        {
             _project.AddContact(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
                 RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
                 RandomNumber(10),
@@ -185,16 +209,6 @@ namespace ContactsApp.View
             VKBox.Text = "";
         }
 
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            FullNameLabel.Text = e.KeyCode.ToString();
-            if (e.KeyCode == Keys.Delete && ContactsList.SelectedIndex != -1)
-            {
-                RemoveContact(ContactsList.SelectedIndex);
-                e.Handled = true;
-            }
-        }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ;
@@ -206,6 +220,11 @@ namespace ContactsApp.View
             {
                 e.Cancel = true;
             }
+        }
+
+        private void FindBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateListBox();
         }
     }
 }

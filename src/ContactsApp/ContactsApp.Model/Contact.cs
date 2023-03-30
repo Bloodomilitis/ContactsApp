@@ -140,7 +140,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Создает экземпляр <see cref="Contact">.
         /// </summary>
-        public Contact(string name, string mail, string phone, DateTime birthday, string idvk)
+    public Contact(string name, string mail, string phone, DateTime birthday, string idvk)
         {
             this.fullName = name;
             this.mail = mail;
