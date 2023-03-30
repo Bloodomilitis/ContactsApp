@@ -115,7 +115,11 @@ namespace ContactsApp.View
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            if(CheckFormsOnErrors();
+            if(CheckFormsOnErrors())
+            {
+                UpdateContact();
+                Close();
+            }
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
