@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Contracts;
+﻿using ContactsApp.Model;
+using System;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using ContactsApp.Model;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ContactsApp.View
 {
@@ -26,6 +16,7 @@ namespace ContactsApp.View
         /// Активный контакт.
         /// </summary>
         private Contact _contact;
+        
         /// <summary>
         /// Возвращает или задает контакт.
         /// </summary>
@@ -44,49 +35,53 @@ namespace ContactsApp.View
                 }
             }
         }
+        
         /// <summary>
         /// Сообщения об ошибках в каждом поле.
         /// </summary>
-        private string _fullNameError, _emailError, _dateError, _phoneError, _vkError;
-        
+        private string _fullNameError, _emailError, _phoneError, _vkError;
+       
         /// <summary>
         /// Создает  экземпляр <see cref="ContactForm">  с пустым контактом.
         /// </summary>
         public ContactForm()
         {
             InitializeComponent();
+            DatePicker.MaxDate= DateTime.Now.Date;
             Contact = new Contact(" ", " ", " ", DatePicker.MinDate, " ");
             _fullNameError = "";
             _emailError = "";
-            _dateError = "";
             _phoneError = "";
             _vkError = "";
         }
+        
         /// <summary>
         /// Создает  экземпляр <see cref="ContactForm">  с указанным контактом.
         /// </summary>
         public ContactForm(Contact contact)
         {
             InitializeComponent();
+            DatePicker.MaxDate = DateTime.Now.Date;         
             Contact = contact;
             FormatNumber();
             _fullNameError = "";
             _emailError = "";
-            _dateError = "";
             _phoneError = "";
             _vkError = "";
         }
+        
         /// <summary>
         /// Обновля поля ввода информацией из активного контакта.
-        /// </summary>
+        /// </summary>    
         private void UpdateForm()
         {
-            FullNameTextBox.Text = _contact.fullName;
-            MailTextBox.Text = _contact.mail;
-            PhoneNumberBox.Text = _contact.phone;
-            DatePicker.Value = _contact.birthday;
+            FullNameTextBox.Text = _contact.FullName;
+            MailTextBox.Text = _contact.Mail;
+            PhoneNumberBox.Text = _contact.Phone;
+            DatePicker.Value = _contact.Birthday;
             VKBox.Text = _contact.idVK;
         }
+        
         /// <summary>
         /// Изменение иконки кнопки добавления фото при наличии или отсутвии над ней курсора.
         /// </summary>
@@ -98,6 +93,7 @@ namespace ContactsApp.View
         {
             ChoosePhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
         }
+        
         /// <summary>
         /// Устанавливает DialogResult на значение No и закрывает форму
         /// </summary>
@@ -106,6 +102,7 @@ namespace ContactsApp.View
             DialogResult = DialogResult.No;
             this.Close();
         }
+        
         /// <summary>
         /// Вывод уведомления на закрытие формы и закрытие при подтверждении.
         /// </summary>
@@ -118,6 +115,7 @@ namespace ContactsApp.View
                 this.Close();
             }
         }
+        
         /// <summary>
         /// При выборе удаляет из поля телефона все нечисловые символы и телефонный код России.
         /// </summary>
@@ -131,6 +129,7 @@ namespace ContactsApp.View
             }
             PhoneNumberBox.Text = regex.Replace(phoneNum, "");
         }
+        
         /// <summary>
         /// Автоматическое форматирование номера под шаблон "+7 (###) ###-##-##" при выходе из поля.
         /// </summary>
@@ -139,7 +138,7 @@ namespace ContactsApp.View
             FormatNumber();
             try
             {
-                _contact.phone = PhoneNumberBox.Text;
+                _contact.   Phone = PhoneNumberBox.Text;
             }
             catch (ArgumentException ex)
             {
@@ -167,21 +166,14 @@ namespace ContactsApp.View
             }
         }
         
-        private void VKBox_Enter(object sender, EventArgs e)
-        {
-            if (VKBox.Text.Length > 50)
-            {
-                VKBox.Text = MailTextBox.Text.Substring(0, 50);
-            }
-        }
-
-
-
+        /// <summary>
+        /// Проверка на правильность формата имени
+        /// </summary>
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _contact.fullName = FullNameTextBox.Text;
+                _contact.FullName = FullNameTextBox.Text;
                 _fullNameError = "";
                 FullNameTextBox.BackColor = Color.White;
             }
@@ -191,7 +183,10 @@ namespace ContactsApp.View
                 FullNameTextBox.BackColor = Color.LightPink;
             }
         }
-
+        
+        /// <summary>
+        /// Проверка на правильность формата телефона
+        /// </summary>
         private void PhoneNumberBox_TextChanged(object sender, EventArgs e)
         {
             if (PhoneNumberBox.Text.Length > 0)
@@ -205,12 +200,15 @@ namespace ContactsApp.View
                 PhoneNumberBox.BackColor = Color.LightPink;
             }
         }
-
+        
+        /// <summary>
+        /// Проверка на правильность формата почты
+        /// </summary>
         private void MailTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _contact.mail = MailTextBox.Text;
+                _contact.Mail = MailTextBox.Text;
                 _emailError = "";
                 MailTextBox.BackColor = Color.White;
             }
@@ -220,7 +218,10 @@ namespace ContactsApp.View
                 MailTextBox.BackColor = Color.LightPink;
             }
         }
-
+        
+        /// <summary>
+        /// Проверка на правильность формата ИД ВК
+        /// </summary>
         private void VKBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -236,42 +237,22 @@ namespace ContactsApp.View
             }
         }
 
-        private void BirthdayPicker_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _contact.birthday = DatePicker.Value;
-                _dateError = "";
-                DateLabel.BackColor = Color.White;
-            }
-            catch (ArgumentException ex)
-            {
-                _dateError = ex.Message;
-                DateLabel.BackColor = Color.LightPink;
-            }
-        }
-
+        /// <summary>
+        /// Проверка на правильность формата имени
+        /// </summary>
         private void FullNameTextBox_Leave(object sender, EventArgs e)
         {
             TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
             FullNameTextBox.Text = ti.ToTitleCase(FullNameTextBox.Text);
         }
-
-        private void BirthdayPicker_DropDown(object sender, EventArgs e)
-        {
-            DatePicker.ValueChanged -= BirthdayPicker_ValueChanged;
-        }
-
-        private void BirthdayPicker_CloseUp(object sender, EventArgs e)
-        {
-            DatePicker.ValueChanged += BirthdayPicker_ValueChanged;
-            BirthdayPicker_ValueChanged(sender, e);
-        }
-
+        
+        /// <summary>
+        /// Проверка на наличие сообщений об ошибке
+        /// </summary>
         private bool CheckFormsOnErrors()
         {
             //_fullNameError, _emailError, _dateError, _phoneError, _vkError
-            if(_fullNameError!="")
+            if (_fullNameError != "")
             {
                 MessageBox.Show(_fullNameError);
             }
@@ -283,15 +264,11 @@ namespace ContactsApp.View
             {
                 MessageBox.Show(_phoneError);
             }
-            if (_dateError != "")
-            {
-                MessageBox.Show(_dateError);
-            }
             if (_vkError != "")
             {
-                MessageBox.Show(_vkError);               
+                MessageBox.Show(_vkError);
             }
-            if(_fullNameError != ""|| _emailError != "" || _dateError != "" || _phoneError != "" || _vkError != "")
+            if (_fullNameError != "" || _emailError != "" || _phoneError != "" || _vkError != "")
             {
                 return false;
             }
@@ -300,13 +277,16 @@ namespace ContactsApp.View
                 return true;
             }
         }
-
+        
+        /// <summary>
+        /// Обновление полей активного контакта
+        /// </summary>
         private void UpdateContact()
         {
-            _contact.fullName = FullNameTextBox.Text;
-            _contact.mail = MailTextBox.Text;
-            _contact.phone = PhoneNumberBox.Text;
-            _contact.birthday = DatePicker.Value;
+            _contact.FullName = FullNameTextBox.Text;
+            _contact.Mail = MailTextBox.Text;
+            _contact.Phone = PhoneNumberBox.Text;
+            _contact.Birthday = DatePicker.Value;
             _contact.idVK = VKBox.Text;
         }
     }

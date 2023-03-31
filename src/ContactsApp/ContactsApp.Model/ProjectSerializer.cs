@@ -1,30 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using static System.Environment;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// Описывает менеджер проекта
+    /// </summary>
     public class ProjectSerializer
     {
-
+        /// <summary>
+        /// Путь к файлу
+        /// </summary>
         public string Filename { get; set; }
+        
+        /// <summary>
+        /// Сохранение указанного проекта в файл
+        /// </summary>
         public void SaveToFile(Project project)
         {
             var Filename = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ContactsApp/Kalashnikov/NoteApp/userdata.json";
             JsonSerializer serializer = new JsonSerializer();
-            //Открываем поток для записи в файл с указанием пути
             try
             {
                 using (StreamWriter sw = new StreamWriter(Filename))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    //Вызываем сериализацию и передаем объект, который хотим сериализовать
                     serializer.Serialize(writer, project);
                 }
             }
@@ -43,6 +45,10 @@ namespace ContactsApp.Model
             }
 
         }
+
+        /// <summary>
+        /// Возвращает десериализованный проект из файла
+        /// </summary>
         public Project LoadFromFile()
         {
             Filename = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ContactsApp/Kalashnikov/NoteApp/userdata.json";
@@ -60,7 +66,7 @@ namespace ContactsApp.Model
                 {
                     return new Project();
                 }
-                
+
             }
             catch
             {

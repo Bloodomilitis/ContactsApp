@@ -2,10 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 
@@ -13,20 +10,20 @@ namespace ContactsApp.Model
     /// <summary>
     /// Описывает проект.
     /// </summary>
-   public class Project
+    public class Project
     {
         /// <summary>
         /// список всех контактов.
         /// </summary>
-        private List<Contact> _Contacts;
+        private List<Contact> _contacts;
 
         /// <summary>
         /// Возвращает или задает список всех контактов.
         /// </summary>
-        public List<Contact> contacts
+        public List<Contact> Contacts
         {
-            get { return _Contacts; }
-            set { _Contacts = value; }
+            get { return _contacts; }
+            set { _contacts = value; }
         }
 
         /// <summary>
@@ -34,59 +31,65 @@ namespace ContactsApp.Model
         /// </summary>
         public void Sort()
         {
-            contacts.Sort((left, right) => left.fullName.CompareTo(right.fullName));
-            foreach (Contact contact in contacts)
+            Contacts.Sort((left, right) => left.FullName.CompareTo(right.   FullName));
+            foreach (Contact contact in Contacts)
             {
                 Console.WriteLine(contact);
             }
         }
+        
         /// <summary>
         /// Добавление в список нового контакта и автоматическая сортировка
         /// </summary>
         public void AddContact(Contact NewContact)
         {
-            contacts.Add(NewContact);
+            Contacts.Add(NewContact);
             Sort();
         }
+        
         /// <summary>
         /// Удаляет объект <see cref="Contact"> 
         /// </summary>
         public void DeleteContact(int DeletedContactId)
         {
-            contacts.RemoveAt(DeletedContactId);
+            Contacts.RemoveAt(DeletedContactId);
             Sort();
         }
+        
         /// <summary>
         /// Возвращает список объектов <see cref="Contact">, одно из полей которых содержит подаваемый паттерн.
         /// </summary>
-        public List<Contact> SearchContacts(string pattern)
+        public List<Contact> SearchContactsByPattern(string pattern)
         {
-            Regex regex = new Regex(@"\w*" + pattern + @"\w*", RegexOptions.Compiled | RegexOptions.IgnoreCase);   
-            return contacts.FindAll(e => regex.IsMatch(e.fullName));
+            Regex regex = new Regex(@"\w*" + pattern + @"\w*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            return Contacts.FindAll(e => regex.IsMatch(e.FullName));
         }
+        
         /// <summary>
         /// Возвращает список объектов <see cref="Contact">, чей день и месяц рождения равны сегодняшнему.
         /// </summary>
         public List<Contact> Celebrants()
         {
-            List<Contact> Celebrants = contacts.Where(contact => contact.birthday.Day == DateTime.Now.Day && contact.birthday.Month == DateTime.Now.Month).ToList();
-            Celebrants.Sort((left, right) => left.fullName.CompareTo(right.fullName));
+            List<Contact> Celebrants = Contacts.Where(contact => contact.Birthday.Day == DateTime.Now.Day && contact.Birthday.Month == DateTime.Now.Month).ToList();
+            Celebrants.Sort((left, right) => left.FullName.CompareTo(right.FullName));
             return Celebrants;
         }
+        
         /// <summary>
         /// Создает пустой экземпляр <see cref="Project">.
         /// </summary>
         public Project()
         {
-            contacts = new List<Contact>();
+            Contacts = new List<Contact>();
         }
+        
         /// <summary>
         /// Создает экземпляр <see cref="Project"> с указанным списком контактов.
         /// </summary>
         [JsonConstructor]
         public Project(List<Contact> contacts)
         {
-            this.contacts = contacts;
+            this.Contacts = contacts;
         }
     }
 }

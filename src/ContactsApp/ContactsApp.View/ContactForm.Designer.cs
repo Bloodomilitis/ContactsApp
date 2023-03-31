@@ -55,7 +55,6 @@ namespace ContactsApp.View
             this.VKBox.Size = new System.Drawing.Size(180, 20);
             this.VKBox.TabIndex = 27;
             this.VKBox.TextChanged += new System.EventHandler(this.VKBox_TextChanged);
-            this.VKBox.Enter += new System.EventHandler(this.VKBox_Enter);
             // 
             // VKLabel
             // 
@@ -168,14 +167,12 @@ namespace ContactsApp.View
             // DatePicker
             // 
             this.DatePicker.Location = new System.Drawing.Point(118, 190);
-            this.DatePicker.MaxDate = new System.DateTime(2023, 3, 30, 16, 54, 58, 962);
+            this.DatePicker.MaxDate = new System.DateTime(9998, 3, 31, 0, 0, 0, 0);
             this.DatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.DatePicker.Name = "DatePicker";
             this.DatePicker.Size = new System.Drawing.Size(180, 20);
             this.DatePicker.TabIndex = 29;
             this.DatePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.DatePicker.CloseUp += new System.EventHandler(this.BirthdayPicker_CloseUp);
-            this.DatePicker.DropDown += new System.EventHandler(this.BirthdayPicker_DropDown);
             // 
             // ConfirmButton
             // 

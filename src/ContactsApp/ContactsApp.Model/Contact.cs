@@ -1,11 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace ContactsApp.Model
 {
@@ -18,24 +12,25 @@ namespace ContactsApp.Model
         /// Полное имя контакта.
         /// </summary>
         private string _fullName;
+        
         /// <summary>
         /// Возвращает или задает полное имя контакта.
         /// </summary>
-        public string fullName
+        public string FullName
         {
             get { return _fullName; }
             set
             {
-                if (value.Length != 0 && value.Length <= 100 && OnlyLetters(value))
+                if (value.Length != 0 && value.Length <= 100 && IsOnlyLetters(value))
                 {
 
                     _fullName = value;
                 }
-                else if (!OnlyLetters(value))
+                else if (!IsOnlyLetters(value))
                 {
                     throw new ArgumentException("Full Name contain number(s)!");
                 }
-                else if (value.Length >100)
+                else if (value.Length > 100)
                 {
                     throw new ArgumentException("Full Name is too big (maximum 100 symbols, including spaces)!");
                 }
@@ -46,17 +41,20 @@ namespace ContactsApp.Model
             }
 
         }
+        
         /// <summary>
         /// Почтовый ящик контакта.
         /// </summary>
         private string _mail;
+        
         /// <summary>
         /// Возвращает или задает почтовый ящик контакта.
         /// </summary>
-        public string mail
+        public string Mail
         {
             get { return _mail; }
-            set {
+            set
+            {
                 if (value.Length != 0 && value.Length <= 100)
                 {
 
@@ -72,17 +70,20 @@ namespace ContactsApp.Model
                 }
             }
         }
+        
         /// <summary>
         /// Телефонный номер контакта.
         /// </summary>
         private string _phone;
+        
         /// <summary>
         /// Возвращает или задает телефонный номер контакта.
         /// </summary>
-        public string phone
+        public string Phone
         {
             get { return _phone; }
-            set {
+            set
+            {
                 if (value.Length != 0)
                 {
 
@@ -94,14 +95,16 @@ namespace ContactsApp.Model
                 }
             }
         }
+       
         /// <summary>
         /// Дата рождения контакта.
         /// </summary>
         private DateTime _birthday;
+       
         /// <summary>
         /// Возвращает или задает дату рождения контакта.
         /// </summary>
-        public DateTime birthday
+        public DateTime Birthday
         {
             get { return _birthday; }
             set
@@ -116,17 +119,20 @@ namespace ContactsApp.Model
                 }
             }
         }
+        
         /// <summary>
         /// Номер ИД в ВК контакта.
         /// </summary>
         private string _idVK;
+        
         /// <summary>
         /// Возвращает или задает номер ИД в ВК контакта.
         /// </summary>
         public string idVK
         {
             get { return _idVK; }
-            set {
+            set
+            {
                 if (value.Length <= 50)
                 {
 
@@ -138,18 +144,20 @@ namespace ContactsApp.Model
                 }
             }
         }
+        
         /// <summary>
         /// Создает экземпляр <see cref="Contact">.
         /// </summary>
         [JsonConstructor]
         public Contact(string fullName, string mail, string phone, DateTime birthday, string idVK)
         {
-            this.fullName = fullName;
-            this.mail = mail;
-            this.phone = phone;
-            this.birthday = birthday;
+            this.FullName = fullName;
+            this.Mail = mail;
+            this.Phone = phone;
+            this.Birthday = birthday;
             this.idVK = idVK;
         }
+        
         /// <summary>
         /// Клонирует данный экземпляр <see cref="Contact">.
         /// </summary>
@@ -157,7 +165,10 @@ namespace ContactsApp.Model
         {
             return MemberwiseClone();
         }
-        public bool OnlyLetters(string str)
+        /// <summary>
+        /// Проверка на наличие чисел в строке
+        /// </summary>
+        public bool IsOnlyLetters(string str)
         {
             foreach (char c in str)
             {
