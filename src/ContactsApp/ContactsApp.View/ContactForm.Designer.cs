@@ -43,7 +43,7 @@ namespace ContactsApp.View
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.ChoosePhotoButton = new System.Windows.Forms.Button();
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
-            this.AcceptButton = new System.Windows.Forms.Button();
+            this.ConfirmButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
             this.SuspendLayout();
@@ -177,21 +177,21 @@ namespace ContactsApp.View
             this.DatePicker.CloseUp += new System.EventHandler(this.BirthdayPicker_CloseUp);
             this.DatePicker.DropDown += new System.EventHandler(this.BirthdayPicker_DropDown);
             // 
-            // AcceptButton
+            // ConfirmButton
             // 
-            this.AcceptButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.AcceptButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.AcceptButton.FlatAppearance.BorderSize = 0;
-            this.AcceptButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.AcceptButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.AcceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AcceptButton.Image = ((System.Drawing.Image)(resources.GetObject("AcceptButton.Image")));
-            this.AcceptButton.Location = new System.Drawing.Point(418, 265);
-            this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(32, 32);
-            this.AcceptButton.TabIndex = 30;
-            this.AcceptButton.UseVisualStyleBackColor = true;
-            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            this.ConfirmButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.ConfirmButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ConfirmButton.FlatAppearance.BorderSize = 0;
+            this.ConfirmButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.ConfirmButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConfirmButton.Image = ((System.Drawing.Image)(resources.GetObject("ConfirmButton.Image")));
+            this.ConfirmButton.Location = new System.Drawing.Point(418, 265);
+            this.ConfirmButton.Name = "ConfirmButton";
+            this.ConfirmButton.Size = new System.Drawing.Size(32, 32);
+            this.ConfirmButton.TabIndex = 30;
+            this.ConfirmButton.UseVisualStyleBackColor = true;
+            this.ConfirmButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // CloseButton
             // 
@@ -214,10 +214,10 @@ namespace ContactsApp.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.AcceptButton;
+            this.CancelButton = this.ConfirmButton;
             this.ClientSize = new System.Drawing.Size(511, 309);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.AcceptButton);
+            this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.DatePicker);
             this.Controls.Add(this.ChoosePhotoButton);
             this.Controls.Add(this.VKBox);
@@ -254,7 +254,7 @@ namespace ContactsApp.View
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Button ChoosePhotoButton;
         private System.Windows.Forms.DateTimePicker DatePicker;
-        private System.Windows.Forms.Button AcceptButton;
+        private System.Windows.Forms.Button ConfirmButton;
         private System.Windows.Forms.Button CloseButton;
     }
 }

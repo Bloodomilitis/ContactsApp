@@ -74,13 +74,15 @@ namespace ContactsApp.Model
             return Celebrants;
         }
         /// <summary>
-        /// Создает экземпляр <see cref="Project">.
+        /// Создает пустой экземпляр <see cref="Project">.
         /// </summary>
-        
         public Project()
         {
             contacts = new List<Contact>();
         }
+        /// <summary>
+        /// Создает экземпляр <see cref="Project"> с указанным списком контактов.
+        /// </summary>
         [JsonConstructor]
         public Project(List<Contact> contacts)
         {
