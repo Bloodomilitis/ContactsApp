@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -140,13 +141,14 @@ namespace ContactsApp.Model
         /// <summary>
         /// Создает экземпляр <see cref="Contact">.
         /// </summary>
-    public Contact(string name, string mail, string phone, DateTime birthday, string idvk)
+        [JsonConstructor]
+        public Contact(string fullName, string mail, string phone, DateTime birthday, string idVK)
         {
-            this.fullName = name;
+            this.fullName = fullName;
             this.mail = mail;
             this.phone = phone;
             this.birthday = birthday;
-            this.idVK = idvk;
+            this.idVK = idVK;
         }
         /// <summary>
         /// Клонирует данный экземпляр <see cref="Contact">.

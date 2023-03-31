@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp.Model;
 using Microsoft.Build.Evaluation;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
@@ -28,13 +29,14 @@ namespace ContactsApp.View
             }
         }
         private Model.Project _project;
-
+        private Model.ProjectSerializer _projectSerializer;
         private List<Contact> _currentContacts;
 
         public MainForm()
         {
-            InitializeComponent();
-            
+            _projectSerializer = new ProjectSerializer();
+            _project = _projectSerializer.LoadFromFile();
+            InitializeComponent();            
         }
         private void RemoveContactButton_MouseMove(object sender, MouseEventArgs e)
         {
@@ -90,6 +92,7 @@ namespace ContactsApp.View
             {
                 _project.AddContact(Contact.Contact); //Забираем измененные данные
                 UpdateListBox();
+                _projectSerializer.SaveToFile(_project);
             }
         }
 
@@ -105,6 +108,7 @@ namespace ContactsApp.View
                     _project.contacts.RemoveAt(ContactsList.SelectedIndex);
                     _project.AddContact(Contact.Contact); //Забираем измененные данные
                     UpdateListBox();
+                    _projectSerializer.SaveToFile(_project);
                 }
             }
         }
@@ -129,22 +133,26 @@ namespace ContactsApp.View
         DateTime RandomDate()
         {
             
-            DateTime date = new DateTime(GenerateRandomNumber(1900, DateTime.Now.Year), GenerateRandomNumber(1, 12), GenerateRandomNumber(1, 28));
+            DateTime date = new DateTime(GenerateRandomNumber(1900, DateTime.Now.Year-1), GenerateRandomNumber(1, 12), GenerateRandomNumber(1, 28));
             return date;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _project = new Model.Project();
-            for (int i = 0; i < 10; i++)
+           
+            if (_project.contacts.Count == 0)
             {
-                Contact contact = new Contact(
-                RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
-                RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
-                RandomNumber(10),
-                DateTime.Now.Date,
-                "");
-                _project.AddContact(contact);
-                ContactsList.Items.Add(_project.contacts[i].fullName);
+                for (int i = 0; i < 10; i++)
+                {
+                    Contact contact = new Contact(
+                    RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
+                    RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
+                    RandomNumber(10),
+                    RandomDate(),
+                    "");
+                    _project.AddContact(contact);
+                    ContactsList.Items.Add(_project.contacts[i].fullName);
+                }
+                _projectSerializer.SaveToFile(_project);
             }
             if (_project.Celebrants().Count > 0)
             {
@@ -192,6 +200,7 @@ namespace ContactsApp.View
                     ContactsList.Items.Add(contact.fullName);
                 }
             }
+            
         }
         private void AddContact()
         {
@@ -219,6 +228,7 @@ namespace ContactsApp.View
         {
             RemoveContact(_project.contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
             UpdateListBox();
+            _projectSerializer.SaveToFile(_project);
         }
         
         private void ContactsList_SelectedIndexChanged(object sender, EventArgs e)

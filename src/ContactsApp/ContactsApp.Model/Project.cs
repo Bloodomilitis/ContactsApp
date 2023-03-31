@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -75,9 +76,15 @@ namespace ContactsApp.Model
         /// <summary>
         /// Создает экземпляр <see cref="Project">.
         /// </summary>
-        public Project() { 
+        
+        public Project()
+        {
             contacts = new List<Contact>();
         }
-        
+        [JsonConstructor]
+        public Project(List<Contact> contacts)
+        {
+            this.contacts = contacts;
+        }
     }
 }
