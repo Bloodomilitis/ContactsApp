@@ -311,7 +311,7 @@ namespace ContactsApp.View
             }
         }
         /// <summary>
-        /// Вывод уведомления на закрытие формы.
+        /// Вывод уведомления на закрытие формы и закрытие при подтверждении.
         /// </summary>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {

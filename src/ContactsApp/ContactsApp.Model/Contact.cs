@@ -19,7 +19,7 @@ namespace ContactsApp.Model
         /// </summary>
         private string _fullName;
         /// <summary>
-        /// Возвращает или задае тполное имя контакта.
+        /// Возвращает или задает полное имя контакта.
         /// </summary>
         public string fullName
         {

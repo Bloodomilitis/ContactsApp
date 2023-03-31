@@ -191,7 +191,7 @@ namespace ContactsApp.View
             this.ConfirmButton.Size = new System.Drawing.Size(32, 32);
             this.ConfirmButton.TabIndex = 30;
             this.ConfirmButton.UseVisualStyleBackColor = true;
-            this.ConfirmButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // CloseButton
             // 

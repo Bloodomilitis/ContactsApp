@@ -17,9 +17,18 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ContactsApp.View
 {
+    /// <summary>
+    /// Описывает второстепенное окно приложения.
+    /// </summary>
     public partial class ContactForm : Form
     {
+        /// <summary>
+        /// Активный контакт.
+        /// </summary>
         private Contact _contact;
+        /// <summary>
+        /// Возвращает или задает контакт.
+        /// </summary>
         public Contact Contact
         {
             get
@@ -35,8 +44,14 @@ namespace ContactsApp.View
                 }
             }
         }
-
+        /// <summary>
+        /// Сообщения об ошибках в каждом поле.
+        /// </summary>
         private string _fullNameError, _emailError, _dateError, _phoneError, _vkError;
+        
+        /// <summary>
+        /// Создает  экземпляр <see cref="ContactForm">  с пустым контактом.
+        /// </summary>
         public ContactForm()
         {
             InitializeComponent();
@@ -47,6 +62,9 @@ namespace ContactsApp.View
             _phoneError = "";
             _vkError = "";
         }
+        /// <summary>
+        /// Создает  экземпляр <see cref="ContactForm">  с указанным контактом.
+        /// </summary>
         public ContactForm(Contact contact)
         {
             InitializeComponent();
@@ -58,7 +76,9 @@ namespace ContactsApp.View
             _phoneError = "";
             _vkError = "";
         }
-
+        /// <summary>
+        /// Обновля поля ввода информацией из активного контакта.
+        /// </summary>
         private void UpdateForm()
         {
             FullNameTextBox.Text = _contact.fullName;
@@ -67,23 +87,53 @@ namespace ContactsApp.View
             DatePicker.Value = _contact.birthday;
             VKBox.Text = _contact.idVK;
         }
-
+        /// <summary>
+        /// Изменение иконки кнопки добавления фото при наличии или отсутвии над ней курсора.
+        /// </summary>
         private void ChoosePhotoButton_MouseMove(object sender, MouseEventArgs e)
         {
             ChoosePhotoButton.Image = Properties.Resources.add_photo_32x32;
         }
-
         private void ChoosePhotoButton_MouseLeave(object sender, EventArgs e)
         {
             ChoosePhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
         }
-
+        /// <summary>
+        /// Устанавливает DialogResult на значение No и закрывает форму
+        /// </summary>
         private void CloseButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.No;
             this.Close();
         }
-
+        /// <summary>
+        /// Вывод уведомления на закрытие формы и закрытие при подтверждении.
+        /// </summary>
+        private void ConfirmButton_Click(object sender, EventArgs e)
+        {
+            if (CheckFormsOnErrors())
+            {
+                UpdateContact();
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+        /// <summary>
+        /// При выборе удаляет из поля телефона все нечисловые символы и телефонный код России.
+        /// </summary>
+        private void PhoneNumberBox_Enter(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"[^\d]");
+            string phoneNum = PhoneNumberBox.Text;
+            if (phoneNum.StartsWith("+7"))
+            {
+                phoneNum = phoneNum.Remove(0, 2);
+            }
+            PhoneNumberBox.Text = regex.Replace(phoneNum, "");
+        }
+        /// <summary>
+        /// Автоматическое форматирование номера под шаблон "+7 (###) ###-##-##" при выходе из поля.
+        /// </summary>
         private void PhoneNumberBox_Leave(object sender, EventArgs e)
         {
             FormatNumber();
@@ -116,17 +166,7 @@ namespace ContactsApp.View
                 PhoneNumberBox.Text = Convert.ToInt64(phoneNum).ToString("+7 (###) ###-##-##");
             }
         }
-        private void PhoneNumberBox_Enter(object sender, EventArgs e)
-        {
-            Regex regex = new Regex(@"[^\d]");
-            string phoneNum = PhoneNumberBox.Text;
-            if (phoneNum.StartsWith("+7"))
-            {
-                phoneNum = phoneNum.Remove(0, 2);
-            }
-            PhoneNumberBox.Text = regex.Replace(phoneNum, "");
-        }
-
+        
         private void VKBox_Enter(object sender, EventArgs e)
         {
             if (VKBox.Text.Length > 50)
@@ -135,15 +175,7 @@ namespace ContactsApp.View
             }
         }
 
-        private void AcceptButton_Click(object sender, EventArgs e)
-        {
-            if(CheckFormsOnErrors())
-            {
-                UpdateContact();
-                DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
+
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
