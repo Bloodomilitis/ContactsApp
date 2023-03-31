@@ -225,7 +225,7 @@ namespace ContactsApp.View
             MailTextBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].Mail;
             PhoneNumberBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].Phone;
             DateBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].Birthday.ToShortDateString();
-            VKBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].idVK;
+            VKBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].IdVK;
         }   
        
         /// <summary>

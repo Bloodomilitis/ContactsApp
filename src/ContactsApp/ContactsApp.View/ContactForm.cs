@@ -79,7 +79,7 @@ namespace ContactsApp.View
             MailTextBox.Text = _contact.Mail;
             PhoneNumberBox.Text = _contact.Phone;
             DatePicker.Value = _contact.Birthday;
-            VKBox.Text = _contact.idVK;
+            VKBox.Text = _contact.IdVK;
         }
         
         /// <summary>
@@ -226,7 +226,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.idVK = VKBox.Text;
+                _contact.IdVK = VKBox.Text;
                 _vkError = "";
                 VKBox.BackColor = Color.White;
             }
@@ -287,7 +287,7 @@ namespace ContactsApp.View
             _contact.Mail = MailTextBox.Text;
             _contact.Phone = PhoneNumberBox.Text;
             _contact.Birthday = DatePicker.Value;
-            _contact.idVK = VKBox.Text;
+            _contact.IdVK = VKBox.Text;
         }
     }
 }

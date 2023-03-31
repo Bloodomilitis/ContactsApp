@@ -128,7 +128,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Возвращает или задает номер ИД в ВК контакта.
         /// </summary>
-        public string idVK
+        public string IdVK
         {
             get { return _idVK; }
             set
@@ -155,7 +155,7 @@ namespace ContactsApp.Model
             this.Mail = mail;
             this.Phone = phone;
             this.Birthday = birthday;
-            this.idVK = idVK;
+            this.IdVK = idVK;
         }
         
         /// <summary>
