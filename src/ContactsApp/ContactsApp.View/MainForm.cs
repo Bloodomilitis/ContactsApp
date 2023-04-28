@@ -69,7 +69,87 @@ namespace ContactsApp.View
                 RandomNumber(10),
                 DateTime.Now.Date,
                 ""));
+        }
+
+
+        /// <summary>
+        /// Проверка на именинников и вывод соответствующей панели.
+        /// </summary>
+        private void CelebrantsCheck()
+        {
+            if (_project.Celebrants().Count > 0)
+            {
+                CelebrantsLabel.Text = "";
+                foreach (Contact celebrants in _project.Celebrants())
+                {
+                    if (CelebrantsLabel.Text.Split().Length < 5)
+                    {
+                        CelebrantsLabel.Text += celebrants.FullName.Split().First() + ", ";
+                    }
+                    else
+                    {
+                        CelebrantsLabel.Text = CelebrantsLabel.Text.Remove(CelebrantsLabel.Text.Length - 2);
+                        CelebrantsLabel.Text += "...";
+                        break;
+                    }
+                }
+                MessagePanel.Visible = true;
+            }
+            else
+            {
+                MessagePanel.Visible = false;
+            }
             UpdateListBox();
+        }
+
+        /// <summary>
+        /// Обновление списка контактов.
+        /// </summary>
+        private void UpdateListBox()
+        {
+            ContactsList.Items.Clear();
+            if (FindBox.Text != "")
+            {
+                _currentContacts = _project.SearchContactsByPattern(FindBox.Text);
+                foreach (Contact contact in _currentContacts)
+                {
+                    ContactsList.Items.Add(contact.FullName);
+                }
+
+            }
+            else
+            {
+                _currentContacts = _project.Contacts;
+                foreach (Contact contact in _currentContacts)
+                {
+                    ContactsList.Items.Add(contact.FullName);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Вывод информации выбранного контакта в полях правой части формы.
+        /// </summary>
+        private void UpdateSelectedContact(int index)
+        {
+
+            FullNameBox.Text = _currentContacts[index].FullName;
+            MailTextBox.Text = _currentContacts[index].Email;
+            PhoneNumberBox.Text = _currentContacts[index].Phone;
+            DateBox.Text = _currentContacts[index].DateOfBirth.ToShortDateString();
+            VKBox.Text = _currentContacts[index].IdVK;
+        }
+
+        /// <summary>
+        /// Очищение полей в правой части формы.
+        /// </summary>
+        private void ClearSelectedContact()
+        {
+            FullNameBox.Text = "";
+            MailTextBox.Text = "";
+            PhoneNumberBox.Text = "";
+            DateBox.Text = "";
+            VKBox.Text = "";
         }
 
         /// <summary>
@@ -94,6 +174,7 @@ namespace ContactsApp.View
                 {
                     AddRandomContact();
                 }
+                _project.Sort();
                 _projectSerializer.SaveToFile(_project);
             }
             UpdateListBox();
@@ -145,63 +226,6 @@ namespace ContactsApp.View
         }
         
         /// <summary>
-        /// Проверка на именинников и вывод соответствующей панели.
-        /// </summary>
-        private void CelebrantsCheck()
-        {
-            if (_project.Celebrants().Count > 0)
-            {
-                Celebrantsabel.Text = "";
-                foreach (Contact celebrants in _project.Celebrants())
-                {
-                    if (Celebrantsabel.Text.Split().Length < 5)
-                    {
-                        Celebrantsabel.Text += celebrants.    FullName.Split().First() + ", ";
-                    }
-                    else
-                    {
-                        Celebrantsabel.Text = Celebrantsabel.Text.Remove(Celebrantsabel.Text.Length - 2);
-                        Celebrantsabel.Text += "...";
-                        break;
-                    }
-                }
-                MessagePanel.Visible = true;
-            }
-            else
-            {
-                MessagePanel.Visible = false;
-            }
-            UpdateListBox();
-        }
-        
-        /// <summary>
-        /// Обновление списка контактов.
-        /// </summary>
-        private void UpdateListBox()
-        {
-            ContactsList.Items.Clear();
-            if (FindBox.Text != "")
-            {
-                _currentContacts = _project.SearchContactsByPattern(FindBox.Text);
-                foreach (Contact contact in _currentContacts)
-                {
-
-                    ContactsList.Items.Add(contact.FullName);
-                }
-
-            }
-            else
-            {
-                _currentContacts = _project.Contacts;
-                foreach (Contact contact in _currentContacts)
-                {
-                    ContactsList.Items.Add(contact.FullName);
-                }
-            }
-
-        }
-        
-        /// <summary>
         /// Реакция на изменение индекса выбранного контакта в ContactList.
         /// </summary>
         private void ContactsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -214,30 +238,6 @@ namespace ContactsApp.View
             {
                 ClearSelectedContact();
             }
-        }
-        
-        /// <summary>
-        /// Вывод информации выбранного контакта в полях правой части формы.
-        /// </summary>
-        private void UpdateSelectedContact(int index)
-        {
-            FullNameBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].FullName;
-            MailTextBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].Mail;
-            PhoneNumberBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].Phone;
-            DateBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].Birthday.ToShortDateString();
-            VKBox.Text = _project.Contacts[_project.Contacts.IndexOf(_currentContacts[index])].IdVK;
-        }   
-       
-        /// <summary>
-        /// Очищение полей в правой части формы.
-        /// </summary>
-        private void ClearSelectedContact()
-        {
-            FullNameBox.Text = "";
-            MailTextBox.Text = "";
-            PhoneNumberBox.Text = "";
-            DateBox.Text = "";
-            VKBox.Text = "";
         }
         
         /// <summary>
@@ -272,6 +272,7 @@ namespace ContactsApp.View
             if (Contact.DialogResult == DialogResult.OK)
             {
                 _project.AddContact(Contact.Contact); //Забираем измененные данные
+                _project.Sort();
                 UpdateListBox();
                 _projectSerializer.SaveToFile(_project);
             }
@@ -289,8 +290,9 @@ namespace ContactsApp.View
 
                 if (Contact.DialogResult == DialogResult.OK)
                 {
-                    _project.Contacts.RemoveAt(ContactsList.SelectedIndex);
+                    _project.Contacts.RemoveAt(_project.Contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
                     _project.AddContact(Contact.Contact); //Забираем измененные данные
+                    _project.Sort();
                     UpdateListBox();
                     _projectSerializer.SaveToFile(_project);
                 }
@@ -303,18 +305,23 @@ namespace ContactsApp.View
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveContact(_project.Contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
+            _project.Sort();
             UpdateListBox();
+            ClearSelectedContact();
             _projectSerializer.SaveToFile(_project);
         }
         private void RemoveContact(int index)
         {
             if (index != -1)
             {
-                if (MessageBox.Show("Do you really want to remove " + ContactsList.SelectedItem, "Remove contact?", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    _project.Contacts.RemoveAt(index);
-                    UpdateListBox();
-                }
+
+            }
+            var result = MessageBox.Show("Do you really want to remove " + ContactsList.SelectedItem, 
+                                                        "Remove contact?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                _project.Contacts.RemoveAt(index);
+                UpdateListBox();
             }
         }
         
@@ -323,17 +330,8 @@ namespace ContactsApp.View
         /// </summary>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ;
-            if (MessageBox.Show("Do you really want to close app?", "Closing app", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-            {
-                e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+            var result = MessageBox.Show("Do you really want to close app?", "Closing app", MessageBoxButtons.YesNo);
+            e.Cancel = result != DialogResult.Yes;
         }
-
-
     }
 }

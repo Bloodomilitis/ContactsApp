@@ -7,10 +7,11 @@ namespace ContactsApp.View
     {
         public AboutForm()
         {
+            this.Text = "";
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }

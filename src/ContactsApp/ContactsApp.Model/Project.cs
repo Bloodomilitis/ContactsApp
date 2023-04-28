@@ -13,29 +13,16 @@ namespace ContactsApp.Model
     public class Project
     {
         /// <summary>
-        /// список всех контактов.
-        /// </summary>
-        private List<Contact> _contacts;
-
-        /// <summary>
         /// Возвращает или задает список всех контактов.
         /// </summary>
-        public List<Contact> Contacts
-        {
-            get { return _contacts; }
-            set { _contacts = value; }
-        }
+        public List<Contact> Contacts { get; set; }
 
         /// <summary>
         /// Сортировка списка контактов по полному имени
         /// </summary>
         public void Sort()
         {
-            Contacts.Sort((left, right) => left.FullName.CompareTo(right.   FullName));
-            foreach (Contact contact in Contacts)
-            {
-                Console.WriteLine(contact);
-            }
+            Contacts.Sort((left, right) => left.FullName.CompareTo(right.FullName));
         }
         
         /// <summary>
@@ -44,7 +31,6 @@ namespace ContactsApp.Model
         public void AddContact(Contact NewContact)
         {
             Contacts.Add(NewContact);
-            Sort();
         }
         
         /// <summary>
@@ -53,7 +39,6 @@ namespace ContactsApp.Model
         public void DeleteContact(int DeletedContactId)
         {
             Contacts.RemoveAt(DeletedContactId);
-            Sort();
         }
         
         /// <summary>
@@ -70,7 +55,7 @@ namespace ContactsApp.Model
         /// </summary>
         public List<Contact> Celebrants()
         {
-            List<Contact> Celebrants = Contacts.Where(contact => contact.Birthday.Day == DateTime.Now.Day && contact.Birthday.Month == DateTime.Now.Month).ToList();
+            List<Contact> Celebrants = Contacts.Where(contact => contact.DateOfBirth.Day == DateTime.Now.Day && contact.DateOfBirth.Month == DateTime.Now.Month).ToList();
             Celebrants.Sort((left, right) => left.FullName.CompareTo(right.FullName));
             return Celebrants;
         }

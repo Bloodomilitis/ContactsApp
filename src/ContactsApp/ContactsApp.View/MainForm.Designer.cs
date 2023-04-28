@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Find_label = new System.Windows.Forms.Label();
+            this.FindLabel = new System.Windows.Forms.Label();
             this.FindBox = new System.Windows.Forms.TextBox();
             this.PhotoBox = new System.Windows.Forms.PictureBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             this.RemoveContactButton = new System.Windows.Forms.Button();
             this.MessagePanel = new System.Windows.Forms.Panel();
             this.CloseMessageButton = new System.Windows.Forms.Button();
-            this.Celebrantsabel = new System.Windows.Forms.Label();
+            this.CelebrantsLabel = new System.Windows.Forms.Label();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.InfoPicture = new System.Windows.Forms.PictureBox();
             this.ContactsList = new System.Windows.Forms.ListBox();
@@ -55,18 +55,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.InfoPicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // Find_label
+            // FindLabel
             // 
-            this.Find_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.FindLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Find_label.AutoSize = true;
-            this.Find_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Find_label.Location = new System.Drawing.Point(13, 13);
-            this.Find_label.Name = "Find_label";
-            this.Find_label.Size = new System.Drawing.Size(34, 15);
-            this.Find_label.TabIndex = 0;
-            this.Find_label.Text = "Find:";
+            this.FindLabel.AutoSize = true;
+            this.FindLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FindLabel.Location = new System.Drawing.Point(13, 13);
+            this.FindLabel.Name = "FindLabel";
+            this.FindLabel.Size = new System.Drawing.Size(34, 15);
+            this.FindLabel.TabIndex = 0;
+            this.FindLabel.Text = "Find:";
             // 
             // FindBox
             // 
@@ -100,6 +100,7 @@
             // 
             this.FullNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.FullNameBox.BackColor = System.Drawing.Color.White;
             this.FullNameBox.Location = new System.Drawing.Point(383, 37);
             this.FullNameBox.Margin = new System.Windows.Forms.Padding(3, 35, 3, 3);
             this.FullNameBox.Name = "FullNameBox";
@@ -111,6 +112,7 @@
             // 
             this.MailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MailTextBox.BackColor = System.Drawing.Color.White;
             this.MailTextBox.Location = new System.Drawing.Point(383, 88);
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.ReadOnly = true;
@@ -129,6 +131,7 @@
             // 
             // PhoneNumberBox
             // 
+            this.PhoneNumberBox.BackColor = System.Drawing.Color.White;
             this.PhoneNumberBox.Location = new System.Drawing.Point(383, 138);
             this.PhoneNumberBox.Name = "PhoneNumberBox";
             this.PhoneNumberBox.ReadOnly = true;
@@ -147,6 +150,7 @@
             // 
             // DateBox
             // 
+            this.DateBox.BackColor = System.Drawing.Color.White;
             this.DateBox.Location = new System.Drawing.Point(383, 188);
             this.DateBox.Name = "DateBox";
             this.DateBox.ReadOnly = true;
@@ -165,6 +169,7 @@
             // 
             // VKBox
             // 
+            this.VKBox.BackColor = System.Drawing.Color.White;
             this.VKBox.Location = new System.Drawing.Point(383, 238);
             this.VKBox.Name = "VKBox";
             this.VKBox.ReadOnly = true;
@@ -248,7 +253,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MessagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.MessagePanel.Controls.Add(this.CloseMessageButton);
-            this.MessagePanel.Controls.Add(this.Celebrantsabel);
+            this.MessagePanel.Controls.Add(this.CelebrantsLabel);
             this.MessagePanel.Controls.Add(this.BirthdayLabel);
             this.MessagePanel.Controls.Add(this.InfoPicture);
             this.MessagePanel.Location = new System.Drawing.Point(277, 310);
@@ -272,18 +277,18 @@
             this.CloseMessageButton.UseVisualStyleBackColor = true;
             this.CloseMessageButton.Click += new System.EventHandler(this.CloseMessageButton_Click);
             // 
-            // Celebrantsabel
+            // CelebrantsLabel
             // 
-            this.Celebrantsabel.AutoSize = true;
-            this.Celebrantsabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.Celebrantsabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Celebrantsabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.Celebrantsabel.Location = new System.Drawing.Point(71, 39);
-            this.Celebrantsabel.MaximumSize = new System.Drawing.Size(400, 0);
-            this.Celebrantsabel.Name = "Celebrantsabel";
-            this.Celebrantsabel.Size = new System.Drawing.Size(76, 15);
-            this.Celebrantsabel.TabIndex = 3;
-            this.Celebrantsabel.Text = "Celebrants";
+            this.CelebrantsLabel.AutoSize = true;
+            this.CelebrantsLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.CelebrantsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CelebrantsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.CelebrantsLabel.Location = new System.Drawing.Point(71, 39);
+            this.CelebrantsLabel.MaximumSize = new System.Drawing.Size(400, 0);
+            this.CelebrantsLabel.Name = "CelebrantsLabel";
+            this.CelebrantsLabel.Size = new System.Drawing.Size(76, 15);
+            this.CelebrantsLabel.TabIndex = 3;
+            this.CelebrantsLabel.Text = "Celebrants";
             // 
             // BirthdayLabel
             // 
@@ -313,6 +318,8 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ContactsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ContactsList.FormattingEnabled = true;
+            this.ContactsList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ContactsList.IntegralHeight = false;
             this.ContactsList.ItemHeight = 15;
             this.ContactsList.Location = new System.Drawing.Point(12, 37);
             this.ContactsList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -343,7 +350,7 @@
             this.Controls.Add(this.ContactsList);
             this.Controls.Add(this.PhotoBox);
             this.Controls.Add(this.FindBox);
-            this.Controls.Add(this.Find_label);
+            this.Controls.Add(this.FindLabel);
             this.Icon = global::ContactsApp.View.Properties.Resources.ContactsApp_96x96;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
@@ -361,7 +368,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label Find_label;
+        private System.Windows.Forms.Label FindLabel;
         private System.Windows.Forms.TextBox FindBox;
         private System.Windows.Forms.PictureBox PhotoBox;
         private System.Windows.Forms.Label FullNameLabel;
@@ -380,7 +387,7 @@
         private System.Windows.Forms.Panel MessagePanel;
         private System.Windows.Forms.PictureBox InfoPicture;
         private System.Windows.Forms.Label BirthdayLabel;
-        private System.Windows.Forms.Label Celebrantsabel;
+        private System.Windows.Forms.Label CelebrantsLabel;
         private System.Windows.Forms.Button CloseMessageButton;
         private System.Windows.Forms.ListBox ContactsList;
     }

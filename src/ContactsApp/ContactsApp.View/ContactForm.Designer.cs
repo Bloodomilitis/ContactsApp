@@ -34,7 +34,6 @@ namespace ContactsApp.View
             this.VKBox = new System.Windows.Forms.TextBox();
             this.VKLabel = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
-            this.PhoneNumberBox = new System.Windows.Forms.TextBox();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.MailTextBox = new System.Windows.Forms.TextBox();
             this.MailLabel = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@ namespace ContactsApp.View
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.PhoneNumberBox = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,17 +75,6 @@ namespace ContactsApp.View
             this.DateLabel.Size = new System.Drawing.Size(77, 15);
             this.DateLabel.TabIndex = 24;
             this.DateLabel.Text = "Date of Birth:";
-            // 
-            // PhoneNumberBox
-            // 
-            this.PhoneNumberBox.Location = new System.Drawing.Point(118, 140);
-            this.PhoneNumberBox.Name = "PhoneNumberBox";
-            this.PhoneNumberBox.Size = new System.Drawing.Size(180, 20);
-            this.PhoneNumberBox.TabIndex = 23;
-            this.PhoneNumberBox.Text = " ";
-            this.PhoneNumberBox.TextChanged += new System.EventHandler(this.PhoneNumberBox_TextChanged);
-            this.PhoneNumberBox.Enter += new System.EventHandler(this.PhoneNumberBox_Enter);
-            this.PhoneNumberBox.Leave += new System.EventHandler(this.PhoneNumberBox_Leave);
             // 
             // PhoneNumberLabel
             // 
@@ -176,6 +165,7 @@ namespace ContactsApp.View
             // 
             // ConfirmButton
             // 
+            this.ConfirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ConfirmButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ConfirmButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ConfirmButton.FlatAppearance.BorderSize = 0;
@@ -192,6 +182,7 @@ namespace ContactsApp.View
             // 
             // CloseButton
             // 
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CloseButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.CloseButton.FlatAppearance.BorderSize = 0;
@@ -206,13 +197,22 @@ namespace ContactsApp.View
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
+            // PhoneNumberBox
+            // 
+            this.PhoneNumberBox.Location = new System.Drawing.Point(121, 140);
+            this.PhoneNumberBox.Mask = "+7(###) ###-##-##";
+            this.PhoneNumberBox.Name = "PhoneNumberBox";
+            this.PhoneNumberBox.Size = new System.Drawing.Size(177, 20);
+            this.PhoneNumberBox.TabIndex = 32;
+            this.PhoneNumberBox.TextChanged += new System.EventHandler(this.PhoneNumberBox_TextChanged);
+            // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.ConfirmButton;
             this.ClientSize = new System.Drawing.Size(511, 309);
+            this.Controls.Add(this.PhoneNumberBox);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.DatePicker);
@@ -220,7 +220,6 @@ namespace ContactsApp.View
             this.Controls.Add(this.VKBox);
             this.Controls.Add(this.VKLabel);
             this.Controls.Add(this.DateLabel);
-            this.Controls.Add(this.PhoneNumberBox);
             this.Controls.Add(this.PhoneNumberLabel);
             this.Controls.Add(this.MailTextBox);
             this.Controls.Add(this.MailLabel);
@@ -242,7 +241,6 @@ namespace ContactsApp.View
         private System.Windows.Forms.TextBox VKBox;
         private System.Windows.Forms.Label VKLabel;
         private System.Windows.Forms.Label DateLabel;
-        private System.Windows.Forms.TextBox PhoneNumberBox;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.TextBox MailTextBox;
         private System.Windows.Forms.Label MailLabel;
@@ -253,5 +251,6 @@ namespace ContactsApp.View
         private System.Windows.Forms.DateTimePicker DatePicker;
         private System.Windows.Forms.Button ConfirmButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.MaskedTextBox PhoneNumberBox;
     }
 }

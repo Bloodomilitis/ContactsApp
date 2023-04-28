@@ -13,18 +13,19 @@ namespace ContactsApp.Model
         /// <summary>
         /// Путь к файлу
         /// </summary>
-        public string Filename { get; set; }
+        public string FolderPath { get; set; }
         
         /// <summary>
         /// Сохранение указанного проекта в файл
         /// </summary>
         public void SaveToFile(Project project)
         {
-            var Filename = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ContactsApp/Kalashnikov/NoteApp/userdata.json";
+            FolderPath = Environment.GetFolderPath(SpecialFolder.ApplicationData) 
+                                                    + "/Kalashnikov/ContactsApp";
             JsonSerializer serializer = new JsonSerializer();
             try
             {
-                using (StreamWriter sw = new StreamWriter(Filename))
+                using (StreamWriter sw = new StreamWriter(FolderPath+"/userdata.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, project);
@@ -32,12 +33,12 @@ namespace ContactsApp.Model
             }
             catch
             {
-                if (!Directory.Exists(Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ContactsApp/Kalashnikov/NoteApp"))
+                if (!Directory.Exists(FolderPath))
                 {
-                    Directory.CreateDirectory(Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ContactsApp/Kalashnikov/NoteApp");
+                    Directory.CreateDirectory(FolderPath);
                 }
-                File.Create(Filename);
-                using (StreamWriter sw = new StreamWriter(Filename))
+                File.Create(FolderPath + "/userdata.json");
+                using (StreamWriter sw = new StreamWriter(FolderPath + "/userdata.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, project);
@@ -51,12 +52,13 @@ namespace ContactsApp.Model
         /// </summary>
         public Project LoadFromFile()
         {
-            Filename = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ContactsApp/Kalashnikov/NoteApp/userdata.json";
+            FolderPath = Environment.GetFolderPath(SpecialFolder.ApplicationData) 
+                                                     + "/Kalashnikov/ContactsApp";
             JsonSerializer serializer = new JsonSerializer();
             try
             {
                 //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                string json = File.ReadAllText(Filename);
+                string json = File.ReadAllText(FolderPath + "/userdata.json");
                 if (json != "")
                 {
                     Project project = JsonConvert.DeserializeObject<Project>(json);

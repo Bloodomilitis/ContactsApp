@@ -3,7 +3,9 @@ using System;
 using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ContactsApp.View
 {
@@ -28,6 +30,7 @@ namespace ContactsApp.View
             }
             set
             {
+
                 _contact = value;
                 if (_contact != null)
                 {
@@ -63,7 +66,6 @@ namespace ContactsApp.View
             InitializeComponent();
             DatePicker.MaxDate = DateTime.Now.Date;         
             Contact = contact;
-            FormatNumber();
             _fullNameError = "";
             _emailError = "";
             _phoneError = "";
@@ -76,9 +78,9 @@ namespace ContactsApp.View
         private void UpdateForm()
         {
             FullNameTextBox.Text = _contact.FullName;
-            MailTextBox.Text = _contact.Mail;
+            MailTextBox.Text = _contact.Email;
             PhoneNumberBox.Text = _contact.Phone;
-            DatePicker.Value = _contact.Birthday;
+            DatePicker.Value = _contact.DateOfBirth;
             VKBox.Text = _contact.IdVK;
         }
         
@@ -100,7 +102,7 @@ namespace ContactsApp.View
         private void CloseButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.No;
-            this.Close();
+            Close();
         }
         
         /// <summary>
@@ -112,60 +114,14 @@ namespace ContactsApp.View
             {
                 UpdateContact();
                 DialogResult = DialogResult.OK;
-                this.Close();
+                Close();
+            }
+            else
+            {
+                DialogResult = DialogResult.None;
             }
         }
-        
-        /// <summary>
-        /// При выборе удаляет из поля телефона все нечисловые символы и телефонный код России.
-        /// </summary>
-        private void PhoneNumberBox_Enter(object sender, EventArgs e)
-        {
-            Regex regex = new Regex(@"[^\d]");
-            string phoneNum = PhoneNumberBox.Text;
-            if (phoneNum.StartsWith("+7"))
-            {
-                phoneNum = phoneNum.Remove(0, 2);
-            }
-            PhoneNumberBox.Text = regex.Replace(phoneNum, "");
-        }
-        
-        /// <summary>
-        /// Автоматическое форматирование номера под шаблон "+7 (###) ###-##-##" при выходе из поля.
-        /// </summary>
-        private void PhoneNumberBox_Leave(object sender, EventArgs e)
-        {
-            FormatNumber();
-            try
-            {
-                _contact.   Phone = PhoneNumberBox.Text;
-            }
-            catch (ArgumentException ex)
-            {
-                _phoneError = ex.Message;
-                PhoneNumberBox.BackColor = Color.LightPink;
-            }
-        }
-        private void FormatNumber()
-        {
-            Regex regex = new Regex(@"[^\d]");
-            string phoneNum = PhoneNumberBox.Text;
-            if (phoneNum.StartsWith("+7"))
-            {
-                phoneNum = phoneNum.Remove(0, 2);
-            }
-            phoneNum = regex.Replace(phoneNum, "");
-            if (phoneNum.Length > 0)
-            {
-                if (phoneNum.Length > 10)
-                {
-                    phoneNum = phoneNum.Substring(0, 9);
-                }
-                phoneNum = Convert.ToInt64(phoneNum).ToString().PadRight(10, '0'); ;
-                PhoneNumberBox.Text = Convert.ToInt64(phoneNum).ToString("+7 (###) ###-##-##");
-            }
-        }
-        
+             
         /// <summary>
         /// Проверка на правильность формата имени
         /// </summary>
@@ -208,7 +164,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.Mail = MailTextBox.Text;
+                _contact.Email = MailTextBox.Text;
                 _emailError = "";
                 MailTextBox.BackColor = Color.White;
             }
@@ -251,7 +207,6 @@ namespace ContactsApp.View
         /// </summary>
         private bool CheckFormsOnErrors()
         {
-            //_fullNameError, _emailError, _dateError, _phoneError, _vkError
             if (_fullNameError != "")
             {
                 MessageBox.Show(_fullNameError);
@@ -268,6 +223,7 @@ namespace ContactsApp.View
             {
                 MessageBox.Show(_vkError);
             }
+
             if (_fullNameError != "" || _emailError != "" || _phoneError != "" || _vkError != "")
             {
                 return false;
@@ -284,9 +240,9 @@ namespace ContactsApp.View
         private void UpdateContact()
         {
             _contact.FullName = FullNameTextBox.Text;
-            _contact.Mail = MailTextBox.Text;
+            _contact.Email = MailTextBox.Text;
             _contact.Phone = PhoneNumberBox.Text;
-            _contact.Birthday = DatePicker.Value;
+            _contact.DateOfBirth = DatePicker.Value;
             _contact.IdVK = VKBox.Text;
         }
     }

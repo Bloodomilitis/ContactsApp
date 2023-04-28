@@ -12,7 +12,25 @@ namespace ContactsApp.Model
         /// Полное имя контакта.
         /// </summary>
         private string _fullName;
-        
+
+        /// <summary>
+        /// Почтовый ящик контакта.
+        /// </summary>
+        private string _email;
+
+        /// <summary>
+        /// Телефонный номер контакта.
+        /// </summary>
+        private string _phone;
+
+        /// <summary>
+        /// Дата рождения контакта.
+        /// </summary>
+        private DateTime _dateOfBirth;
+        /// <summary>
+        /// Номер ИД в ВК контакта.
+        /// </summary>
+        private string _idVK;
         /// <summary>
         /// Возвращает или задает полное имя контакта.
         /// </summary>
@@ -43,22 +61,17 @@ namespace ContactsApp.Model
         }
         
         /// <summary>
-        /// Почтовый ящик контакта.
-        /// </summary>
-        private string _mail;
-        
-        /// <summary>
         /// Возвращает или задает почтовый ящик контакта.
         /// </summary>
-        public string Mail
+        public string Email
         {
-            get { return _mail; }
+            get { return _email; }
             set
             {
                 if (value.Length != 0 && value.Length <= 100)
                 {
 
-                    _mail = value;
+                    _email = value;
                 }
                 else if (value.Length > 100)
                 {
@@ -70,11 +83,6 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
-        /// <summary>
-        /// Телефонный номер контакта.
-        /// </summary>
-        private string _phone;
         
         /// <summary>
         /// Возвращает или задает телефонный номер контакта.
@@ -97,21 +105,16 @@ namespace ContactsApp.Model
         }
        
         /// <summary>
-        /// Дата рождения контакта.
-        /// </summary>
-        private DateTime _birthday;
-       
-        /// <summary>
         /// Возвращает или задает дату рождения контакта.
         /// </summary>
-        public DateTime Birthday
+        public DateTime DateOfBirth
         {
-            get { return _birthday; }
+            get { return _dateOfBirth; }
             set
             {
                 if (value.Year >= 1900 && value.Date < DateTime.Now)
                 {
-                    _birthday = value;
+                    _dateOfBirth = value;
                 }
                 else
                 {
@@ -119,11 +122,6 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
-        /// <summary>
-        /// Номер ИД в ВК контакта.
-        /// </summary>
-        private string _idVK;
         
         /// <summary>
         /// Возвращает или задает номер ИД в ВК контакта.
@@ -149,12 +147,12 @@ namespace ContactsApp.Model
         /// Создает экземпляр <see cref="Contact">.
         /// </summary>
         [JsonConstructor]
-        public Contact(string fullName, string mail, string phone, DateTime birthday, string idVK)
+        public Contact(string fullName, string email, string phone, DateTime dateOfBirth, string idVK)
         {
             this.FullName = fullName;
-            this.Mail = mail;
+            this.Email = email;
             this.Phone = phone;
-            this.Birthday = birthday;
+            this.DateOfBirth = dateOfBirth;
             this.IdVK = idVK;
         }
         
@@ -168,9 +166,9 @@ namespace ContactsApp.Model
         /// <summary>
         /// Проверка на наличие чисел в строке
         /// </summary>
-        public bool IsOnlyLetters(string str)
+        public bool IsOnlyLetters(string value)
         {
-            foreach (char c in str)
+            foreach (char c in value)
             {
                 if (c >= '0' && c <= '9')
                     return false;
