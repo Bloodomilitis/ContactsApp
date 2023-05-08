@@ -15,7 +15,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Проект, хранящий информацию о всех контактах.
         /// </summary>
-        private Model.Project _project;
+        private Project _project;
         
         /// <summary>
         /// Менеджер проекта.
@@ -31,6 +31,7 @@ namespace ContactsApp.View
         /// Служебные генераторы случайных слов и чисел указанной длины, а также дат и контакта.
         /// </summary>
         private static readonly Random randomInstance = new Random();
+
         public static int GenerateRandomNumber(int min, int max)
         {
             lock (randomInstance) // synchronize
@@ -38,6 +39,7 @@ namespace ContactsApp.View
                 return randomInstance.Next(min, max);
             }
         }
+
         private string RandomWord(int length)
         {
             Random rnd = new Random();
@@ -77,29 +79,42 @@ namespace ContactsApp.View
         /// </summary>
         private void CelebrantsCheck()
         {
-            if (_project.Celebrants().Count > 0)
-            {
-                CelebrantsLabel.Text = "";
-                foreach (Contact celebrants in _project.Celebrants())
-                {
-                    if (CelebrantsLabel.Text.Split().Length < 5)
-                    {
-                        CelebrantsLabel.Text += celebrants.FullName.Split().First() + ", ";
-                    }
-                    else
-                    {
-                        CelebrantsLabel.Text = CelebrantsLabel.Text.Remove(CelebrantsLabel.Text.Length - 2);
-                        CelebrantsLabel.Text += "...";
-                        break;
-                    }
-                }
-                MessagePanel.Visible = true;
-            }
-            else
+            var contacts = _project.Celebrants();
+            if (contacts.Count == 0)
             {
                 MessagePanel.Visible = false;
+                return;
             }
-            UpdateListBox();
+
+            var surnames = 
+                contacts.Select(contact => contact.FullName.Split().First()).ToList();
+            surnames = surnames.Take(Math.Min(surnames.Count, 5)).ToList();
+            var fullText = string.Join(", ", surnames);
+            MessagePanel.Visible = true;
+
+            //if (_project.Celebrants().Count > 0)
+            //{
+            //    CelebrantsLabel.Text = "";
+            //    foreach (Contact celebrants in _project.Celebrants())
+            //    {
+            //        if (CelebrantsLabel.Text.Split().Length < 5)
+            //        {
+            //            CelebrantsLabel.Text += celebrants.FullName.Split().First() + ", ";
+            //        }
+            //        else
+            //        {
+            //            CelebrantsLabel.Text = CelebrantsLabel.Text.Remove(CelebrantsLabel.Text.Length - 2);
+            //            CelebrantsLabel.Text += "...";
+            //            break;
+            //        }
+            //    }
+            //    MessagePanel.Visible = true;
+            //}
+            //else
+            //{
+            //    MessagePanel.Visible = false;
+            //}
+            //UpdateListBox();
         }
 
         /// <summary>
@@ -132,12 +147,12 @@ namespace ContactsApp.View
         /// </summary>
         private void UpdateSelectedContact(int index)
         {
-
-            FullNameBox.Text = _currentContacts[index].FullName;
-            MailTextBox.Text = _currentContacts[index].Email;
-            PhoneNumberBox.Text = _currentContacts[index].Phone;
-            DateBox.Text = _currentContacts[index].DateOfBirth.ToShortDateString();
-            VKBox.Text = _currentContacts[index].IdVK;
+            var currentContact = _currentContacts[index];
+            FullNameBox.Text = currentContact.FullName;
+            MailTextBox.Text = currentContact.Email;
+            PhoneNumberBox.Text = currentContact.Phone;
+            DateBox.Text = currentContact.DateOfBirth.ToShortDateString();
+            VKBox.Text = currentContact.IdVK;
         }
 
         /// <summary>

@@ -145,14 +145,15 @@ namespace ContactsApp.View
         /// </summary>
         private void PhoneNumberBox_TextChanged(object sender, EventArgs e)
         {
-            if (PhoneNumberBox.Text.Length > 0)
+            try
             {
+                _contact.Phone = PhoneNumberBox.Text;
                 _phoneError = "";
                 PhoneNumberBox.BackColor = Color.White;
             }
-            else
+            catch (ArgumentException ex)
             {
-                _phoneError = "Phone is empty!";
+                _phoneError = ex.Message;
                 PhoneNumberBox.BackColor = Color.LightPink;
             }
         }

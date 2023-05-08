@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
+using static System.Net.Mime.MediaTypeNames;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace ContactsApp.Model
 {
@@ -39,22 +42,21 @@ namespace ContactsApp.Model
             get { return _fullName; }
             set
             {
-                if (value.Length != 0 && value.Length <= 100 && IsOnlyLetters(value))
+                if (!IsOnlyLetters(value))
                 {
-
-                    _fullName = value;
-                }
-                else if (!IsOnlyLetters(value))
-                {
-                    throw new ArgumentException("Full Name contain number(s)!");
+                    throw new ArgumentException("Full Name contain non-letter characters!");
                 }
                 else if (value.Length > 100)
                 {
                     throw new ArgumentException("Full Name is too big (maximum 100 symbols, including spaces)!");
                 }
-                else
+                else if (value.Length == 0)
                 {
                     throw new ArgumentException("Full Name is empty!");
+                }
+                else
+                {
+                    _fullName = value;
                 }
             }
 
@@ -68,18 +70,17 @@ namespace ContactsApp.Model
             get { return _email; }
             set
             {
-                if (value.Length != 0 && value.Length <= 100)
-                {
-
-                    _email = value;
-                }
-                else if (value.Length > 100)
+                if (value.Length > 100)
                 {
                     throw new ArgumentException("E-mail is too big (maximum 100 symbols, including spaces)!");
                 }
-                else
+                else if( value.Length == 0)
                 {
                     throw new ArgumentException("E-mail is empty!");
+                }
+                else
+                {
+                    _email = value;
                 }
             }
         }
@@ -92,14 +93,14 @@ namespace ContactsApp.Model
             get { return _phone; }
             set
             {
-                if (value.Length != 0)
+                if (value.Length == 0 || String.Join("", Regex.Split(value, @"\D+").Where(s => s != "").ToArray()) == "7")
                 {
-
-                    _phone = value;
+                    throw new ArgumentException("Phone is empty!");
+                    
                 }
                 else
                 {
-                    throw new ArgumentException("Phone is empty!");
+                    _phone = value;
                 }
             }
         }
@@ -136,6 +137,7 @@ namespace ContactsApp.Model
 
                     _idVK = value;
                 }
+                
                 else
                 {
                     throw new ArgumentException("VK id is too big (maximum 50 symbols)!");
@@ -155,7 +157,11 @@ namespace ContactsApp.Model
             this.DateOfBirth = dateOfBirth;
             this.IdVK = idVK;
         }
-        
+
+        public Contact()
+        {
+        }
+
         /// <summary>
         /// Клонирует данный экземпляр <see cref="Contact">.
         /// </summary>
@@ -164,7 +170,7 @@ namespace ContactsApp.Model
             return MemberwiseClone();
         }
         /// <summary>
-        /// Проверка на наличие чисел в строке
+        /// Проверка на наличие небуквенных символов в строке
         /// </summary>
         public bool IsOnlyLetters(string value)
         {
