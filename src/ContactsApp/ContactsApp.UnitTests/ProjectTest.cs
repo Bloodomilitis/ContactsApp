@@ -69,7 +69,7 @@ namespace ContactsApp.UnitTests
             project.Sort();
             var expected = 1;
             var actual = project.SearchContactsByPattern("A").Count;
-            
+
             Assert.AreEqual(expected, actual, "TestSearchContactsByPattern возвращает неправильный список контактов");
         }
 

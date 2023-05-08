@@ -50,7 +50,7 @@ namespace ContactsApp.UnitTests
             "Должно возникать исключение, если электронная почта длиннее 100 символов",
             TestName = "Присвоение неправильной электронной почты больше 100 символов")]
         public void TestEmailSet_ArgumentException(string wrongEmail, string message)
-                {
+        {
             var contact = new Contact();
             Assert.Throws<ArgumentException>(
                 () => { contact.Email = wrongEmail; },
@@ -81,7 +81,7 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Позитивный тест геттера DateOfBirth")]
         public void TestDateOfBirthGet_CorrectValue()
         {
-            var expected = new DateTime(1999,11,12);
+            var expected = new DateTime(1999, 11, 12);
             var contact = new Contact();
             contact.DateOfBirth = expected;
             var actual = contact.DateOfBirth;
@@ -123,7 +123,7 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Проверка клонирования контакта")]
         public void CloneTest()
         {
-            var contact = new Contact("Kirill","2002_kirill@mail.ru","+79021659485", DateTime.Now ,"");
+            var contact = new Contact("Kirill", "2002_kirill@mail.ru", "+79021659485", DateTime.Now, "");
             var clone = (Contact)contact.Clone();
             Assert.AreEqual(contact.FullName, clone.FullName, "Клонирование неправильно устанавливает в клоне полное имя");
             Assert.AreEqual(contact.Email, clone.Email, "Клонирование неправильно устанавливает в клоне электронную почту");

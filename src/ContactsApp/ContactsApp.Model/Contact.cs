@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using static System.Net.Mime.MediaTypeNames;
-using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
 {
@@ -61,7 +60,7 @@ namespace ContactsApp.Model
             }
 
         }
-        
+
         /// <summary>
         /// Возвращает или задает почтовый ящик контакта.
         /// </summary>
@@ -74,7 +73,7 @@ namespace ContactsApp.Model
                 {
                     throw new ArgumentException("E-mail is too big (maximum 100 symbols, including spaces)!");
                 }
-                else if( value.Length == 0)
+                else if (value.Length == 0)
                 {
                     throw new ArgumentException("E-mail is empty!");
                 }
@@ -84,7 +83,7 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
+
         /// <summary>
         /// Возвращает или задает телефонный номер контакта.
         /// </summary>
@@ -96,7 +95,7 @@ namespace ContactsApp.Model
                 if (value.Length == 0 || String.Join("", Regex.Split(value, @"\D+").Where(s => s != "").ToArray()) == "7")
                 {
                     throw new ArgumentException("Phone is empty!");
-                    
+
                 }
                 else
                 {
@@ -104,7 +103,7 @@ namespace ContactsApp.Model
                 }
             }
         }
-       
+
         /// <summary>
         /// Возвращает или задает дату рождения контакта.
         /// </summary>
@@ -123,7 +122,7 @@ namespace ContactsApp.Model
                 }
             }
         }
-        
+
         /// <summary>
         /// Возвращает или задает номер ИД в ВК контакта.
         /// </summary>
@@ -137,14 +136,14 @@ namespace ContactsApp.Model
 
                     _idVK = value;
                 }
-                
+
                 else
                 {
                     throw new ArgumentException("VK id is too big (maximum 50 symbols)!");
                 }
             }
         }
-        
+
         /// <summary>
         /// Создает экземпляр <see cref="Contact">.
         /// </summary>

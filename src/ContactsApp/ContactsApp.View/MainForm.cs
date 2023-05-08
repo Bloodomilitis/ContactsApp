@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ContactsApp.View
@@ -11,27 +12,29 @@ namespace ContactsApp.View
     /// </summary>
     public partial class MainForm : Form
     {
-        
+
         /// <summary>
         /// Проект, хранящий информацию о всех контактах.
         /// </summary>
         private Project _project;
-        
+
         /// <summary>
         /// Менеджер проекта.
         /// </summary>
         private Model.ProjectSerializer _projectSerializer;
-        
+
         /// <summary>
         /// Список отображаемых контактов.
         /// </summary>
         private List<Contact> _currentContacts;
-        
+
         /// <summary>
-        /// Служебные генераторы случайных слов и чисел указанной длины, а также дат и контакта.
+        /// генератор случайных чисел.
         /// </summary>
         private static readonly Random randomInstance = new Random();
-
+        /// <summary>
+        /// генератор случайного числа в указанном диапазоне.
+        /// </summary>
         public static int GenerateRandomNumber(int min, int max)
         {
             lock (randomInstance) // synchronize
@@ -39,40 +42,50 @@ namespace ContactsApp.View
                 return randomInstance.Next(min, max);
             }
         }
-
+        /// <summary>
+        /// генератор случайного слова указанной длины.
+        /// </summary>
         private string RandomWord(int length)
         {
             Random rnd = new Random();
-            Char[] pwdChars = new Char[26] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
             string word = String.Empty;
             for (int i = 0; i < length; i++)
-                word += pwdChars[GenerateRandomNumber(0, 25)];
+                word += (char) GenerateRandomNumber(97, 122);
             return word;
         }
+        /// <summary>
+        /// Служебный генератор случайного числа указанной длины.
+        /// </summary>
         private string RandomNumber(int length)
         {
-            Char[] pwdChars = new Char[10] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             string number = String.Empty;
             for (int i = 0; i < length; i++)
-                number += pwdChars[GenerateRandomNumber(0, 9)];
+                number += GenerateRandomNumber(0, 9);
             return number;
         }
+        /// <summary>
+        /// генератор случайной даты от 1 января 1900 года по сегодняшний день.
+        /// </summary>
         DateTime RandomDate()
         {
 
-            DateTime date = new DateTime(GenerateRandomNumber(1900, DateTime.Now.Year - 1), GenerateRandomNumber(1, 12), GenerateRandomNumber(1, 28));
+            DateTime date = new DateTime(GenerateRandomNumber(1900, DateTime.Now.Year), GenerateRandomNumber(1, 12), GenerateRandomNumber(1, 28));
             return date;
         }
+
+        /// <summary>
+        /// генератор контакта со случайными параметрами.
+        /// </summary>
         private void AddRandomContact()
         {
 
-            _project.AddContact(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
+            _project.AddContact(new Contact(
+                RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
                 RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
                 RandomNumber(10),
                 DateTime.Now.Date,
                 ""));
         }
-
 
         /// <summary>
         /// Проверка на именинников и вывод соответствующей панели.
@@ -86,35 +99,12 @@ namespace ContactsApp.View
                 return;
             }
 
-            var surnames = 
+            var surnames =
                 contacts.Select(contact => contact.FullName.Split().First()).ToList();
             surnames = surnames.Take(Math.Min(surnames.Count, 5)).ToList();
             var fullText = string.Join(", ", surnames);
+            CelebrantsLabel.Text = fullText;
             MessagePanel.Visible = true;
-
-            //if (_project.Celebrants().Count > 0)
-            //{
-            //    CelebrantsLabel.Text = "";
-            //    foreach (Contact celebrants in _project.Celebrants())
-            //    {
-            //        if (CelebrantsLabel.Text.Split().Length < 5)
-            //        {
-            //            CelebrantsLabel.Text += celebrants.FullName.Split().First() + ", ";
-            //        }
-            //        else
-            //        {
-            //            CelebrantsLabel.Text = CelebrantsLabel.Text.Remove(CelebrantsLabel.Text.Length - 2);
-            //            CelebrantsLabel.Text += "...";
-            //            break;
-            //        }
-            //    }
-            //    MessagePanel.Visible = true;
-            //}
-            //else
-            //{
-            //    MessagePanel.Visible = false;
-            //}
-            //UpdateListBox();
         }
 
         /// <summary>
@@ -176,26 +166,18 @@ namespace ContactsApp.View
             _project = _projectSerializer.LoadFromFile();
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// Выполняет проверки после загрузки формы.
         /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            if (_project.Contacts.Count == 0)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    AddRandomContact();
-                }
-                _project.Sort();
-                _projectSerializer.SaveToFile(_project);
-            }
+            _project.Sort();
+            _projectSerializer.SaveToFile(_project);
             UpdateListBox();
             CelebrantsCheck();
         }
-        
+
         /// <summary>
         /// Изменение иконки кнопки удаления контакта при наличии или отсутвии над ней курсора.
         /// </summary>
@@ -207,7 +189,7 @@ namespace ContactsApp.View
         {
             RemoveContactButton.Image = Properties.Resources.remove_contact_32x32_gray;
         }
-       
+
         /// <summary>
         /// Изменение иконки кнопки изменения контакта при наличии или отсутвии над ней курсора.
         /// </summary>
@@ -219,7 +201,7 @@ namespace ContactsApp.View
         {
             EditContactButton.Image = Properties.Resources.edit_contact_32x32_gray;
         }
-        
+
         /// <summary>
         /// Изменение иконки кнопки добавления контакта при наличии или отсутвии над ней курсора.
         /// </summary>
@@ -231,7 +213,7 @@ namespace ContactsApp.View
         {
             AddContactButton.Image = Properties.Resources.add_contact_32x32_gray;
         }
-        
+
         /// <summary>
         /// Закрывает панель уведомления об именинниках.
         /// </summary>
@@ -239,7 +221,7 @@ namespace ContactsApp.View
         {
             MessagePanel.Visible = false;
         }
-        
+
         /// <summary>
         /// Реакция на изменение индекса выбранного контакта в ContactList.
         /// </summary>
@@ -254,7 +236,7 @@ namespace ContactsApp.View
                 ClearSelectedContact();
             }
         }
-        
+
         /// <summary>
         /// Реакция на изменение текста в FindBox.
         /// </summary>
@@ -262,7 +244,7 @@ namespace ContactsApp.View
         {
             UpdateListBox();
         }
-        
+
         /// <summary>
         /// Вызов AboutForm при нажатии на F1.
         /// </summary>
@@ -271,17 +253,19 @@ namespace ContactsApp.View
             AboutForm newForm = new AboutForm();
             newForm.Show();
         }
-        
+
         /// <summary>
         /// Вызов ContactForm и добавление нового контакта.
         /// </summary>
         private void AddContactButton_Click(object sender, EventArgs e)
         {
-            var Contact = new ContactForm(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
+            /*var Contact = new ContactForm(new Contact(RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
                 RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
                 RandomNumber(10),
                 RandomDate(),
                 "")); //Создаем форму
+            */
+            var Contact = new ContactForm();
             Contact.ShowDialog(); //Отображаем форму для редактирования
 
             if (Contact.DialogResult == DialogResult.OK)
@@ -292,7 +276,7 @@ namespace ContactsApp.View
                 _projectSerializer.SaveToFile(_project);
             }
         }
-        
+
         /// <summary>
         /// Вызов ContactForm и изменение выбранного контакта.
         /// </summary>
@@ -313,7 +297,7 @@ namespace ContactsApp.View
                 }
             }
         }
-        
+
         /// <summary>
         /// Удаление выбранного контакта.
         /// </summary>
@@ -331,7 +315,7 @@ namespace ContactsApp.View
             {
 
             }
-            var result = MessageBox.Show("Do you really want to remove " + ContactsList.SelectedItem, 
+            var result = MessageBox.Show("Do you really want to remove " + ContactsList.SelectedItem,
                                                         "Remove contact?", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
@@ -339,7 +323,7 @@ namespace ContactsApp.View
                 UpdateListBox();
             }
         }
-        
+
         /// <summary>
         /// Вывод уведомления на закрытие формы и закрытие при подтверждении.
         /// </summary>

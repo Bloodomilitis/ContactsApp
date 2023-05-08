@@ -14,18 +14,18 @@ namespace ContactsApp.Model
         /// Путь к файлу
         /// </summary>
         public string FolderPath { get; set; }
-        
+
         /// <summary>
         /// Сохранение указанного проекта в файл
         /// </summary>
         public void SaveToFile(Project project)
         {
-            FolderPath = Environment.GetFolderPath(SpecialFolder.ApplicationData) 
+            FolderPath = Environment.GetFolderPath(SpecialFolder.ApplicationData)
                                                     + "/Kalashnikov/ContactsApp";
             JsonSerializer serializer = new JsonSerializer();
             try
             {
-                using (StreamWriter sw = new StreamWriter(FolderPath+"/userdata.json"))
+                using (StreamWriter sw = new StreamWriter(FolderPath + "/userdata.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Serialize(writer, project);
@@ -52,7 +52,7 @@ namespace ContactsApp.Model
         /// </summary>
         public Project LoadFromFile()
         {
-            FolderPath = Environment.GetFolderPath(SpecialFolder.ApplicationData) 
+            FolderPath = Environment.GetFolderPath(SpecialFolder.ApplicationData)
                                                      + "/Kalashnikov/ContactsApp";
             JsonSerializer serializer = new JsonSerializer();
             try
@@ -70,10 +70,18 @@ namespace ContactsApp.Model
                 }
 
             }
-            catch
+            catch (FileNotFoundException)
             {
+                File.Create(FolderPath + "/userdata.json");
                 return new Project();
             }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(FolderPath);
+                File.Create(FolderPath + "/userdata.json").Close();
+                return new Project();
+            }
+
         }
     }
 }

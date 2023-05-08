@@ -324,7 +324,7 @@
             this.ContactsList.Location = new System.Drawing.Point(12, 37);
             this.ContactsList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ContactsList.Name = "ContactsList";
-            this.ContactsList.Size = new System.Drawing.Size(240, 319);
+            this.ContactsList.Size = new System.Drawing.Size(240, 329);
             this.ContactsList.TabIndex = 6;
             this.ContactsList.SelectedIndexChanged += new System.EventHandler(this.ContactsList_SelectedIndexChanged);
             // 

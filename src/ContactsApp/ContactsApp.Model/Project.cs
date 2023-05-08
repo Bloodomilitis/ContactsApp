@@ -24,7 +24,7 @@ namespace ContactsApp.Model
         {
             Contacts.Sort((left, right) => left.FullName.CompareTo(right.FullName));
         }
-        
+
         /// <summary>
         /// Добавление в список нового контакта и автоматическая сортировка
         /// </summary>
@@ -32,7 +32,7 @@ namespace ContactsApp.Model
         {
             Contacts.Add(NewContact);
         }
-        
+
         /// <summary>
         /// Удаляет объект <see cref="Contact"> 
         /// </summary>
@@ -40,7 +40,7 @@ namespace ContactsApp.Model
         {
             Contacts.RemoveAt(DeletedContactId);
         }
-        
+
         /// <summary>
         /// Возвращает список объектов <see cref="Contact">, одно из полей которых содержит подаваемый паттерн.
         /// </summary>
@@ -49,7 +49,7 @@ namespace ContactsApp.Model
             Regex regex = new Regex(@"\w*" + pattern + @"\w*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             return Contacts.FindAll(e => regex.IsMatch(e.FullName));
         }
-        
+
         /// <summary>
         /// Возвращает список объектов <see cref="Contact">, чей день и месяц рождения равны сегодняшнему.
         /// </summary>
@@ -59,7 +59,7 @@ namespace ContactsApp.Model
             Celebrants.Sort((left, right) => left.FullName.CompareTo(right.FullName));
             return Celebrants;
         }
-        
+
         /// <summary>
         /// Создает пустой экземпляр <see cref="Project">.
         /// </summary>
@@ -67,7 +67,7 @@ namespace ContactsApp.Model
         {
             Contacts = new List<Contact>();
         }
-        
+
         /// <summary>
         /// Создает экземпляр <see cref="Project"> с указанным списком контактов.
         /// </summary>
