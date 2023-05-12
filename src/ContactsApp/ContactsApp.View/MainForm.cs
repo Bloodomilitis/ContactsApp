@@ -29,65 +29,6 @@ namespace ContactsApp.View
         private List<Contact> _currentContacts;
 
         /// <summary>
-        /// генератор случайных чисел.
-        /// </summary>
-        private static readonly Random randomInstance = new Random();
-        /// <summary>
-        /// генератор случайного числа в указанном диапазоне.
-        /// </summary>
-        public static int GenerateRandomNumber(int min, int max)
-        {
-            lock (randomInstance) // synchronize
-            {
-                return randomInstance.Next(min, max);
-            }
-        }
-        /// <summary>
-        /// генератор случайного слова указанной длины.
-        /// </summary>
-        private string RandomWord(int length)
-        {
-            Random rnd = new Random();
-            string word = String.Empty;
-            for (int i = 0; i < length; i++)
-                word += (char) GenerateRandomNumber(97, 122);
-            return word;
-        }
-        /// <summary>
-        /// Служебный генератор случайного числа указанной длины.
-        /// </summary>
-        private string RandomNumber(int length)
-        {
-            string number = String.Empty;
-            for (int i = 0; i < length; i++)
-                number += GenerateRandomNumber(0, 9);
-            return number;
-        }
-        /// <summary>
-        /// генератор случайной даты от 1 января 1900 года по сегодняшний день.
-        /// </summary>
-        DateTime RandomDate()
-        {
-
-            DateTime date = new DateTime(GenerateRandomNumber(1900, DateTime.Now.Year), GenerateRandomNumber(1, 12), GenerateRandomNumber(1, 28));
-            return date;
-        }
-
-        /// <summary>
-        /// генератор контакта со случайными параметрами.
-        /// </summary>
-        private void AddRandomContact()
-        {
-
-            _project.AddContact(new Contact(
-                RandomWord(GenerateRandomNumber(6, 12)) + " " + RandomWord(GenerateRandomNumber(4, 8)),
-                RandomWord(GenerateRandomNumber(6, 12)) + "@mail.ru",
-                RandomNumber(10),
-                DateTime.Now.Date,
-                ""));
-        }
-
-        /// <summary>
         /// Проверка на именинников и вывод соответствующей панели.
         /// </summary>
         private void CelebrantsCheck()
