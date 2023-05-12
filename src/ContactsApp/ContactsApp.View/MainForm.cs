@@ -284,17 +284,22 @@ namespace ContactsApp.View
         {
             if (ContactsList.SelectedIndex != -1)
             {
-                var Contact = new ContactForm((Contact)_project.Contacts[_project.Contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex])].Clone()); //Создаем форму
-                Contact.ShowDialog(); //Отображаем форму для редактирования
+                EditContact(_project.Contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
+            }
+        }
 
-                if (Contact.DialogResult == DialogResult.OK)
-                {
-                    _project.Contacts.RemoveAt(_project.Contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
-                    _project.AddContact(Contact.Contact); //Забираем измененные данные
-                    _project.Sort();
-                    UpdateListBox();
-                    _projectSerializer.SaveToFile(_project);
-                }
+        private void EditContact(int index)
+        {
+            var Contact = new ContactForm((Contact)_project.Contacts[index].Clone()); //Создаем форму
+            Contact.ShowDialog(); //Отображаем форму для редактирования
+
+            if (Contact.DialogResult == DialogResult.OK)
+            {
+                _project.Contacts.RemoveAt(_project.Contacts.IndexOf(_currentContacts[ContactsList.SelectedIndex]));
+                _project.AddContact(Contact.Contact); //Забираем измененные данные
+                _project.Sort();
+                UpdateListBox();
+                _projectSerializer.SaveToFile(_project);
             }
         }
 
