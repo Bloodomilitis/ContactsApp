@@ -21,7 +21,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Менеджер проекта.
         /// </summary>
-        private Model.ProjectSerializer _projectSerializer;
+        private ProjectSerializer _projectSerializer;
 
         /// <summary>
         /// Список отображаемых контактов.

@@ -77,14 +77,14 @@ namespace ContactsApp.UnitTests
         public void TestCelebrants()
         {
             var firstContact = new Contact("AAA", "2002_kirill@mail.ru", "+79021659485", DateTime.Now, "");
-            var secondContact = new Contact("BBB", "2002_kirill@mail.ru", "+79021659485", DateTime.Now, "");
+            var secondContact = new Contact("BBB", "2002_kirill@mail.ru", "+79021659485", DateTime.Today.AddDays(-1), "");
             var thirdContact = new Contact("CCC", "2002_kirill@mail.ru", "+79021659485", DateTime.Now, "");
             var project = new Project();
             project.AddContact(thirdContact);
             project.AddContact(firstContact);
             project.AddContact(secondContact);
             project.Sort();
-            var expected = 3;
+            var expected = 2;
             var actual = project.Celebrants().Count;
 
             Assert.AreEqual(expected, actual, "TestSearchContactsByPattern возвращает неправильный список контактов");

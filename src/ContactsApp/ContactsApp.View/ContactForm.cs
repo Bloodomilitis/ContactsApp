@@ -212,23 +212,6 @@ namespace ContactsApp.View
         /// </summary>
         private bool CheckFormsOnErrors()
         {
-           /* if (_fullNameError != "")
-            {
-                MessageBox.Show(_fullNameError);
-            }
-            if (_emailError != "")
-            {
-                MessageBox.Show(_emailError);
-            }
-            if (_phoneError != "")
-            {
-                MessageBox.Show(_phoneError);
-            }
-            if (_vkError != "")
-            {
-                MessageBox.Show(_vkError);
-            }
-            */
             if (_fullNameError != "" || _emailError != "" || _phoneError != "" || _vkError != "")
             {
                 List<string> messages= new List<string>();
