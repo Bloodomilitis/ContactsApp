@@ -73,6 +73,10 @@ namespace ContactsApp.Model
                 {
                     throw new ArgumentException("E-mail is too big (maximum 100 symbols, including spaces)!");
                 }
+                else if(!value.Contains("@"))
+                {
+                    throw new ArgumentException("E-mail must contain @!");
+                }
                 else if (value.Length == 0)
                 {
                     throw new ArgumentException("E-mail is empty!");

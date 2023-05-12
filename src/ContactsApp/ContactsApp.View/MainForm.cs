@@ -113,22 +113,10 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsList.Items.Clear();
-            if (FindBox.Text != "")
+            _currentContacts = _project.SearchContactsByPattern(FindBox.Text);
+            foreach (Contact contact in _currentContacts)
             {
-                _currentContacts = _project.SearchContactsByPattern(FindBox.Text);
-                foreach (Contact contact in _currentContacts)
-                {
-                    ContactsList.Items.Add(contact.FullName);
-                }
-
-            }
-            else
-            {
-                _currentContacts = _project.Contacts;
-                foreach (Contact contact in _currentContacts)
-                {
-                    ContactsList.Items.Add(contact.FullName);
-                }
+                ContactsList.Items.Add(contact.FullName);
             }
         }
 
